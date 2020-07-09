@@ -1,8 +1,10 @@
-package com.example.reproductor;
+package com.example.reproductor.main;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.reproductor.R;
 
 public class MainActivity extends AppCompatActivity {
 
