@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".ReproductorScreen">
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toTopOf="@id/gl_endContainerSong"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_startReciclerSongs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"/>
+
+
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/kill_em_all"
+        app:layout_constraintBottom_toTopOf="@+id/gl_endReciclerSongs"
+        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gl_startReciclerSongs" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_endReciclerSongs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.554" />
+
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        style="@android:style/Widget.DeviceDefault.SeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:indeterminate="false"
+        android:max="100"
+        android:maxHeight="6dp"
+        android:minHeight="6dp"
+        android:progress="30"
+        android:progressDrawable="@drawable/track_seeckbar"
+        android:thumb="@drawable/seekbar_thumb"
+        app:layout_constraintBottom_toTopOf="@id/gl_endContainerSong"
+        app:layout_constraintTop_toTopOf="@id/gl_endReciclerSongs"
+
+        app:layout_constraintVertical_bias="0.5">
+
+    </SeekBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0:00"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/gl_endContainerSong"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintLeft_toLeftOf="@id/seekBar"
+        android:layout_marginLeft="6dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3:51"
+        android:textColor="#FFF"
+        app:layout_constraintBottom_toTopOf="@+id/gl_endContainerSong"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar"
+        app:layout_constraintRight_toRightOf="@id/seekBar"
+        android:layout_marginRight="6dp"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_endContainerSong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".673" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_btnPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".73" />
+
+    <ImageButton
+        android:id="@+id/btnPause"
+        android:layout_width="111dp"
+        android:layout_height="102dp"
+        android:background="#0000"
+        android:src="@drawable/ic_pause_button"
+        app:layout_constraintBottom_toTopOf="@+id/gl_endControls"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause"
+        android:contentDescription="@string/pause"
+        />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:src="@drawable/ic_skip_next_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPause"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnPause"
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause"
+    />
+
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:src="@drawable/ic_skip_previous_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPause"
+        app:layout_constraintEnd_toStartOf="@+id/btnPause"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_endControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.841" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

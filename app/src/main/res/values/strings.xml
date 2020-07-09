@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Reproductor</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name_song">The Four Horseman</string>
+    <string name="author_name">Metallica</string>
+    <string name="pause">Pausa</string>
 </resources>
