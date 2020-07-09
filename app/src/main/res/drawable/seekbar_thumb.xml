@@ -4,7 +4,6 @@
 
     <solid android:color="#AED"/>
 
-    <size android:width="12dp"
-        android:height="6dp"/>
+
 
 </shape>

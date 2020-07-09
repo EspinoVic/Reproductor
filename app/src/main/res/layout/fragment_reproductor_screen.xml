@@ -21,20 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/kill_em_all"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/gl_endReciclerSongs"
-        app:layout_constraintEnd_toEndOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gl_startReciclerSongs" />
+        app:layout_constraintTop_toTopOf="@id/gl_startReciclerSongs"
+        tools:listitem="@layout/song_item_" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_endReciclerSongs"
@@ -46,7 +45,6 @@
 
     <SeekBar
         android:id="@+id/seekBar"
-        style="@android:style/Widget.DeviceDefault.SeekBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:foregroundGravity="center"
@@ -67,24 +65,24 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
         android:text="0:00"
-        android:textColor="#FFF"
+        android:textColor="#8D8D8D"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/gl_endContainerSong"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:layout_constraintLeft_toLeftOf="@id/seekBar"
-        android:layout_marginLeft="6dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="18dp"
         android:text="3:51"
-        android:textColor="#FFF"
+        android:textColor="#8D8D8D"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/gl_endContainerSong"
-        app:layout_constraintTop_toBottomOf="@+id/seekBar"
         app:layout_constraintRight_toRightOf="@id/seekBar"
-        android:layout_marginRight="6dp"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/seekBar" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -107,14 +105,13 @@
         android:layout_width="111dp"
         android:layout_height="102dp"
         android:background="#0000"
+        android:contentDescription="@string/pause"
         android:src="@drawable/ic_pause_button"
         app:layout_constraintBottom_toTopOf="@+id/gl_endControls"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/gl_btnPause"
-        android:contentDescription="@string/pause"
-        />
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause" />
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -125,9 +122,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnPause"
-        app:layout_constraintTop_toTopOf="@+id/gl_btnPause"
-    />
-
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause" />
 
 
     <ImageButton
@@ -148,6 +143,46 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.841" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_startBtnsConfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".91" />
 
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_shuffle_black_24dp"
+        android:background="#00000000"
+        app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_favorite_border_black_24dp"
+        android:background="#00000000"
+        app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        />
+
+
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_repeat_black_36dp"
+        android:background="#00000000"
+        app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
