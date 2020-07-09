@@ -104,7 +104,7 @@
         android:id="@+id/btnPause"
         android:layout_width="111dp"
         android:layout_height="102dp"
-        android:background="#0000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="@string/pause"
         android:src="@drawable/ic_pause_button"
         app:layout_constraintBottom_toTopOf="@+id/gl_endControls"
@@ -116,19 +116,20 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_skip_next_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnPause"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/btnPause"
-        app:layout_constraintTop_toTopOf="@+id/gl_btnPause" />
+        app:layout_constraintTop_toTopOf="@+id/gl_btnPause"
+        />
 
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#00000000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_skip_previous_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/btnPause"
         app:layout_constraintEnd_toStartOf="@+id/btnPause"
@@ -150,22 +151,22 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent=".91" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_shuffle_black_24dp"
-        android:background="#00000000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.2"
         />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_favorite_border_black_24dp"
-        android:background="#00000000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -174,11 +175,11 @@
 
 
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_repeat_black_36dp"
-        android:background="#00000000"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintTop_toTopOf="@id/gl_startBtnsConfig"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
