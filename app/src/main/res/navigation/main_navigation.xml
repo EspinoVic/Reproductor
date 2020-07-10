@@ -13,12 +13,20 @@
         <action
             android:id="@+id/action_musicLists_to_reproductorScreen"
             app:destination="@id/reproductorScreen"
-            app:enterAnim="@anim/enter_slide_from_right"
-            app:exitAnim="@anim/exit_slide_to_left"
+
+            app:enterAnim="@anim/enter_slide_from_bottom"
+            app:exitAnim="@anim/exit_slide_to_top"
 
             app:popExitAnim="@anim/exit_slide_to_rigth"
             app:popEnterAnim="@anim/enter_slide_from_left"
             />
+        <!--
+        enterAnim -> nuevo fragment entrando
+        exitAnim -> fragment actual saliendo
+
+        porExitAnim ->Salida del fragment "nuevo"
+        popEnterAnim ->entrada del viejo fragment
+        -->
     </fragment>
     <fragment
         android:id="@+id/reproductorScreen"
