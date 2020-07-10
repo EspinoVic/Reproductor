@@ -51,14 +51,11 @@ public class ReproductorScreen extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);
         adapterSongsCurrentPlaying = new Adapter();
         recyclerPlayer.setAdapter(adapterSongsCurrentPlaying);
-
-
-
 
        // snapHelper.findTargetSnapPosition(layoutManager,10,0);
        // snapHelper.onFling(10,10);
@@ -94,9 +91,6 @@ public class ReproductorScreen extends Fragment {
         });
 
 
-
-
-
         recyclerPlayer.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
@@ -114,10 +108,12 @@ public class ReproductorScreen extends Fragment {
                 //but still have the same problem of calling
                 View findSnapView = snapHelper.findSnapView(layoutManager);
                 int position = layoutManager.getPosition(findSnapView);
+                indexSongCurrent=position;
                 System.out.println("Last position: " +position );
             }
 
             @Override
+            @SuppressWarnings("unused")
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 //super.onScrollStateChanged(recyclerView, newState);
                 switch (newState) {

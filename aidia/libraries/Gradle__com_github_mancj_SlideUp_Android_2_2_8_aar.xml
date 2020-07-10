@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.mancj:SlideUp-Android:2.2.8@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40cc921de2ced8514ff24ebbb60621b1/jetified-SlideUp-Android-2.2.8/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40cc921de2ced8514ff24ebbb60621b1/jetified-SlideUp-Android-2.2.8/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/40cc921de2ced8514ff24ebbb60621b1/jetified-SlideUp-Android-2.2.8/res" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mancj/SlideUp-Android/2.2.8/122bbf0ef954a3ce1fb5143c8577dfbd94510e2d/SlideUp-Android-2.2.8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.mancj/SlideUp-Android/2.2.8/b9fad7f07a2770a7c5a4f1e3396fb89a3f7254c0/SlideUp-Android-2.2.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
