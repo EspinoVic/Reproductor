@@ -20,6 +20,7 @@ import android.widget.ImageView;
 
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.Adapter;
+import com.example.reproductor.transitions.DetailsTransition;
 
 
 /**
@@ -51,6 +52,7 @@ public class ReproductorScreen extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setSharedElementEnterTransition(new DetailsTransition());
 
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);

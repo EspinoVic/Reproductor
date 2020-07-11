@@ -139,7 +139,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/ic_pause_button"
             android:layout_marginRight="8dp"
-
+            android:transitionName="transition_btnPause"
             app:layout_constraintVertical_bias=".5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/btn_nextSong"
@@ -152,6 +152,7 @@
             android:id="@+id/btn_nextSong"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_skip_next_black_24dp"
+            android:transitionName="transition_btnNext"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintRight_toRightOf="parent"
