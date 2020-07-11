@@ -78,6 +78,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@drawable/kill_em_all"
+            android:transitionName="transition_imgCurrentSong"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -111,6 +112,7 @@
             android:textColor="@color/lyrics_primary"
             android:textSize="15dp"
             android:textStyle="bold"
+            android:transitionName="transition_songName"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
             app:layout_constraintTop_toTopOf="@id/gl_topText"
             />
@@ -124,6 +126,7 @@
             android:gravity="center"
             android:textSize="13dp"
             android:textColor="@color/lyric_secondary"
+            android:transitionName="transition_authorName"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
             app:layout_constraintTop_toBottomOf="@id/txt_songName"
             />

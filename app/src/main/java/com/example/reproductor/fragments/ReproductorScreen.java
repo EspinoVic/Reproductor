@@ -4,6 +4,7 @@ package com.example.reproductor.fragments;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -70,6 +71,8 @@ public class ReproductorScreen extends Fragment {
         btnNext = playerView.findViewById(R.id.btn_nextSong);
         btnPreviouse = playerView.findViewById(R.id.btn_previousSong);
         btnPause = playerView.findViewById(R.id.btnPause);
+
+
 
         //make validation for index in range of itemCount
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -146,4 +149,14 @@ public class ReproductorScreen extends Fragment {
         return playerView;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //View viewByPosition = this.layoutManager.findViewByPosition(indexSongCurrent).;
+      //  Adapter.ViewHolder viewHolderForItemId = (Adapter.ViewHolder) recyclerPlayer.findViewHolderForItemId(indexSongCurrent);
+       // viewHolderForItemId.getImg().setTransitionName("transition_imgCurrentSong");
+        //View itemView = recyclerPlayer.findViewHolderForAdapterPosition(0).itemView;
+        //itemView.findViewById(R.id.img_song).setTransitionName("transition_imgCurrentSong");
+    }
 }

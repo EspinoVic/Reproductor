@@ -51,12 +51,21 @@ public class MusicLists extends Fragment {
         final View btnNextSong = containerMiniPlayer.findViewById(R.id.btn_nextSong);
         //btnPause.setTransitionName("transitionN_btnNextSong");
 
+        final View imgCurrentSong = containerMiniPlayer.findViewById(R.id.img_song);
+        final View txtSongName = containerMiniPlayer.findViewById(R.id.txt_songName);
+        final View txtAuthorNAme = containerMiniPlayer.findViewById(R.id.txt_authorName);
+
+
+
         containerMiniPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentNavigator.Extras extras = new FragmentNavigator.Extras.Builder()
                         .addSharedElement(btnPause, "transition_btnPause")
                         .addSharedElement(btnNextSong,"transition_btnNext")
+                        .addSharedElement(imgCurrentSong,"transition_imgCurrentSong")
+                        .addSharedElement(txtSongName,"transition_songName")
+                        .addSharedElement(txtAuthorNAme,"transition_authorName")
                         .build();
                 Navigation.findNavController(view).navigate(R.id.action_musicLists_to_reproductorScreen,
                         null,
