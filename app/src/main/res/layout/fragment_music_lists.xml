@@ -1,24 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MusicLists"
     android:background="@color/colorPrimary"
+    tools:context=".fragments.MusicLists"
 
     >
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_topTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.0" />
 
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout_listas"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/tab_layout_background"
+        android:foregroundGravity="center"
+        app:tabIndicatorGravity="center"
+        app:flow_verticalAlign="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_topTabLayout"
+        app:layout_constraintBottom_toTopOf="@id/gl_topViewPager"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"
 
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:tabBackground="@drawable/tab_layout_selector"
+        app:tabIndicatorHeight="0dp"
+
+        app:tabMode="scrollable"
+
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="@color/lyrics_primary"
+        app:tabTextAppearance="@style/TabTextAppearance"
+
         app:tabTextColor="#8D8D8D">
 
         <com.google.android.material.tabs.TabItem
@@ -37,15 +58,23 @@
             android:text="Stared" />
     </com.google.android.material.tabs.TabLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_topViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        app:layout_constraintGuide_percent="0.09"
+         />
+
     <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vp2_musicLists"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/vp2_musicLists"
+        app:layout_constraintBottom_toTopOf="@id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayout_listas"
-        app:layout_constraintBottom_toTopOf="@id/divider"
-        >
+        app:layout_constraintTop_toBottomOf="@id/gl_topViewPager">
 
 
     </androidx.viewpager2.widget.ViewPager2>
@@ -54,13 +83,12 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@drawable/divider"
-        android:layout_marginRight="30dp"
         android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/divider"
         app:layout_constraintBottom_toTopOf="@+id/container_mini_player"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_mini_player"
@@ -70,8 +98,7 @@
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        >
+        app:layout_constraintRight_toRightOf="parent">
 
 
         <ImageView
@@ -81,11 +108,10 @@
             android:src="@drawable/kill_em_all"
             android:transitionName="transition_imgCurrentSong"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintHorizontal_bias="0.5"
-            />
+            app:layout_constraintVertical_bias="0.5" />
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -112,59 +138,57 @@
             android:text="@string/name_song"
             android:textColor="@color/lyrics_primary"
             android:textSize="15dp"
+
             android:textStyle="bold"
             android:transitionName="transition_songName"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
-            app:layout_constraintTop_toTopOf="@id/gl_topText"
-            />
+            app:layout_constraintTop_toTopOf="@id/gl_topText" />
+
         <TextView
+            android:id="@+id/txt_authorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/txt_authorName"
-            android:text="@string/author_name"
             android:layout_gravity="center"
             android:layout_weight="2"
             android:gravity="center"
-            android:textSize="13dp"
+            android:text="@string/author_name"
             android:textColor="@color/lyric_secondary"
+            android:textSize="13dp"
             android:transitionName="transition_authorName"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
-            app:layout_constraintTop_toBottomOf="@id/txt_songName"
-            />
+            app:layout_constraintTop_toBottomOf="@id/txt_songName" />
 
 
         <ImageButton
             android:id="@+id/btnPause"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:layout_marginRight="8dp"
             android:adjustViewBounds="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="@string/pause"
             android:scaleType="fitXY"
             android:src="@drawable/ic_pause_button"
-            android:layout_marginRight="8dp"
             android:transitionName="transition_btnPause"
-            app:layout_constraintVertical_bias=".5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toLeftOf="@id/btn_nextSong"
             app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintVertical_bias=".5" />
 
         <ImageButton
+            android:id="@+id/btn_nextSong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_nextSong"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/ic_skip_next_black_24dp"
             android:transitionName="transition_btnNext"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintVertical_bias="0.5"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            />
-
+            app:layout_constraintVertical_bias="0.5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
