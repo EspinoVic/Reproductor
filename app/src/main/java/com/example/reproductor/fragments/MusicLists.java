@@ -8,12 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.FragmentNavigator;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.reproductor.R;
+import com.example.reproductor.adapters.Adapter;
+import com.example.reproductor.adapters.PlayListFragmentAdapter;
 
 
 /**
@@ -21,6 +24,7 @@ import com.example.reproductor.R;
  */
 public class MusicLists extends Fragment {
 
+    ViewPager2 vp2_musicList;
 
     public MusicLists() {
         // Required empty public constructor
@@ -55,6 +59,7 @@ public class MusicLists extends Fragment {
         final View txtSongName = containerMiniPlayer.findViewById(R.id.txt_songName);
         final View txtAuthorNAme = containerMiniPlayer.findViewById(R.id.txt_authorName);
 
+         vp2_musicList = view.findViewById(R.id.vp2_musicLists);
 
 
         containerMiniPlayer.setOnClickListener(new View.OnClickListener() {
@@ -74,5 +79,8 @@ public class MusicLists extends Fragment {
                 );
             }
         });
+
+        this.vp2_musicList.setAdapter(new PlayListFragmentAdapter(this,1));
+
     }
 }

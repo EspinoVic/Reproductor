@@ -57,7 +57,7 @@ public class ReproductorScreen extends Fragment {
 
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        adapterSongsCurrentPlaying = new Adapter();
+        adapterSongsCurrentPlaying = new Adapter("unique");
         recyclerPlayer.setAdapter(adapterSongsCurrentPlaying);
 
        // snapHelper.findTargetSnapPosition(layoutManager,10,0);
