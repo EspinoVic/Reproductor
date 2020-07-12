@@ -36,8 +36,8 @@ public class CurrentPlayList extends Fragment {
     private String mParam2;
 
     RecyclerView recycler_songsCurrentlyPlaying;
-    LinearLayoutManager layoutManager =
-            new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
+ //   LinearLayoutManager layoutManager =
+   //         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
 
     public CurrentPlayList() {
         // Required empty public constructor
@@ -82,7 +82,9 @@ public class CurrentPlayList extends Fragment {
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
         this.recycler_songsCurrentlyPlaying.setAdapter(new Adapter("lista"));
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
-        recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
+        //recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
+        recycler_songsCurrentlyPlaying.setLayoutManager( new LinearLayoutManager(getActivity()));
+
 
     }
 }
