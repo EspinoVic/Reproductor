@@ -12,7 +12,14 @@
         tools:layout="@layout/fragment_music_lists" >
         <action
             android:id="@+id/action_musicLists_to_currentPlaying"
-            app:destination="@id/currentPlaying" />
+            app:destination="@id/currentPlaying"
+            
+            app:enterAnim="@anim/enter_slide_from_bottom"
+            app:exitAnim="@anim/exit_slide_to_top"
+
+            app:popExitAnim="@anim/exit_slide_to_bottom"
+            app:popEnterAnim="@anim/enter_slide_from_top"
+            />
     </fragment>
     <fragment
         android:id="@+id/currentPlaying"
