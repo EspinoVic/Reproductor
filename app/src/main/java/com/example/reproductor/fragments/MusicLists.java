@@ -67,7 +67,7 @@ public class MusicLists extends Fragment {
                         .addSharedElement(txtSongName,"transition_songName")
                         .addSharedElement(txtAuthorNAme,"transition_authorName")
                         .build();
-                Navigation.findNavController(view).navigate(R.id.action_musicLists_to_reproductorScreen,
+                Navigation.findNavController(view).navigate(R.id.action_musicLists_to_currentPlaying,
                         null,
                         /*para hacer el clear al backstack */null,
                         extras

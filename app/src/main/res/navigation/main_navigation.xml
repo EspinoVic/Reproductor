@@ -11,26 +11,14 @@
         android:label="fragment_music_lists"
         tools:layout="@layout/fragment_music_lists" >
         <action
-            android:id="@+id/action_musicLists_to_reproductorScreen"
-            app:destination="@id/reproductorScreen"
-
-            app:enterAnim="@anim/enter_slide_from_bottom"
-            app:exitAnim="@anim/exit_slide_to_top"
-
-            app:popExitAnim="@anim/exit_slide_to_bottom"
-            app:popEnterAnim="@anim/enter_slide_from_top"
-            />
-        <!--
-        enterAnim -> nuevo fragment entrando
-        exitAnim -> fragment actual saliendo
-
-        porExitAnim ->Salida del fragment "nuevo"
-        popEnterAnim ->entrada del viejo fragment
-        -->
+            android:id="@+id/action_musicLists_to_currentPlaying"
+            app:destination="@id/currentPlaying" />
     </fragment>
     <fragment
-        android:id="@+id/reproductorScreen"
-        android:name="com.example.reproductor.fragments.ReproductorScreen"
-        android:label="fragment_reproductor_screen"
-        tools:layout="@layout/fragment_reproductor_screen" />
+        android:id="@+id/currentPlaying"
+        android:name="com.example.reproductor.fragments.currentPlaying.CurrentPlaying"
+        android:label="fragment_current_playing"
+        tools:layout="@layout/fragment_current_playing"
+
+        />
 </navigation>
