@@ -44,29 +44,29 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="3"
-        android:gravity="center"
+        android:gravity="start"
+        android:singleLine="true"
         android:text="@string/name_song"
         android:textColor="@color/lyrics_primary"
-        android:singleLine="true"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/gl_startName"
-        app:layout_constraintTop_toTopOf="@id/gl_topText"
-        />
+        app:layout_constraintTop_toTopOf="@id/gl_topText" />
+
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/txt_authorName"
-        android:text="@string/author_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="2"
-        android:gravity="center"
         android:layout_marginTop="4dp"
-        android:textSize="14sp"
+        android:gravity="left"
+        android:text="@string/author_name"
         android:textColor="@color/lyric_secondary"
+        android:textSize="14sp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="@id/gl_startName"
-        app:layout_constraintTop_toBottomOf="@id/txt_songName"
-        />
+        app:layout_constraintTop_toBottomOf="@id/txt_songName" />
 
 
 

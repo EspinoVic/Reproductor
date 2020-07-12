@@ -2,13 +2,19 @@ package com.example.reproductor.fragments.currentPlaying;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.reproductor.R;
+import com.example.reproductor.adapters.recyclers.Adapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +34,10 @@ public class CurrentPlayList extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    RecyclerView recycler_songsCurrentlyPlaying;
+    LinearLayoutManager layoutManager =
+            new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
 
     public CurrentPlayList() {
         // Required empty public constructor
@@ -62,5 +72,17 @@ public class CurrentPlayList extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_current_play_list, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
+        this.recycler_songsCurrentlyPlaying.setAdapter(new Adapter("lista"));
+        recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
+        recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
+
     }
 }

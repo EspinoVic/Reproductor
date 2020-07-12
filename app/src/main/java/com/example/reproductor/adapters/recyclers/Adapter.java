@@ -1,4 +1,4 @@
-package com.example.reproductor.adapters;
+package com.example.reproductor.adapters.recyclers;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +24,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private static final String TAG = Adapter.class.getSimpleName();
 
     private static final int ITEM_COUNT = 20;
+    private String kindView;
     private List<Song> songList;
 
-    public Adapter() {
+    public Adapter(String kindView) {
         super();
-
+        this.kindView = kindView;
         // Create some items
         songList = new ArrayList<>();
         for (int i = 0; i < ITEM_COUNT; ++i) {
@@ -44,7 +45,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item_, parent, false);
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(
+                kindView.equals("lista")?R.layout.song_item_lista:R.layout.song_item_,
+                parent, false);
+
         v.findViewById(R.id.img_song).setTransitionName("transition_imgCurrentSong");
         v.findViewById(R.id.txt_songName).setTransitionName("transition_songName");
         v.findViewById(R.id.txt_authorName).setTransitionName("transition_authorName");

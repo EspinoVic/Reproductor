@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
@@ -20,7 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.reproductor.R;
-import com.example.reproductor.adapters.Adapter;
+import com.example.reproductor.adapters.recyclers.Adapter;
 import com.example.reproductor.transitions.DetailsTransition;
 
 
@@ -79,7 +78,7 @@ public class ReproductorScreen extends Fragment {
 
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        adapterSongsCurrentPlaying = new Adapter();
+        adapterSongsCurrentPlaying = new Adapter("unique_element");
         recyclerPlayer.setAdapter(adapterSongsCurrentPlaying);
 
        // snapHelper.findTargetSnapPosition(layoutManager,10,0);
