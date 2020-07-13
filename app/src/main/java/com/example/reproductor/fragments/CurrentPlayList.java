@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.R;
-import com.example.reproductor.adapters.Adapter;
 
 
 /**
@@ -80,7 +79,7 @@ public class CurrentPlayList extends Fragment {
 
 
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        this.recycler_songsCurrentlyPlaying.setAdapter(new Adapter("lista"));
+        this.recycler_songsCurrentlyPlaying.setAdapter(new com.example.reproductor.adapters.recyclers.CurrentPlayList("lista"));
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
         //recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
         recycler_songsCurrentlyPlaying.setLayoutManager( new LinearLayoutManager(getActivity()));

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container_mini_player"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="4dp"
+    app:layout_constraintBottom_toBottomOf="@id/gl_bottomMarg"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintHorizontal_bias="0.5"
+    app:layout_constraintVertical_bias="0.5"
+    >
+
+
+    <ImageView
+        android:id="@+id/img_folder"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/ic_baseline_folder_24"
+        android:transitionName="transition_imgCurrentSong"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/gl_startName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.5"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_startName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_topText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+
+    <TextView
+        android:id="@+id/txt_folder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="3"
+        android:gravity="start"
+        android:singleLine="true"
+        android:text="@string/folder"
+        android:textColor="@color/lyrics_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:transitionName="transition_songName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/gl_startName"
+        app:layout_constraintTop_toTopOf="@id/gl_topText" />
+
+    <TextView
+        android:id="@+id/txt_path"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:gravity="start"
+        android:text="@string/ruta"
+        android:textColor="@color/lyric_secondary"
+        android:textSize="14sp"
+        android:singleLine="true"
+        android:transitionName="transition_authorName"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/gl_startName"
+        app:layout_constraintTop_toBottomOf="@id/txt_folder" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

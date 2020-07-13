@@ -6,4 +6,6 @@
     <string name="name_song">The Four Horseman</string>
     <string name="author_name">Metallica</string>
     <string name="pause">Pausa</string>
+    <string name="folder">Folder</string>
+    <string name="ruta">Ruta</string>
 </resources>

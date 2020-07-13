@@ -15,8 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.reproductor.R;
-import com.example.reproductor.adapters.Adapter;
-import com.example.reproductor.adapters.PlayListFragmentAdapter;
+import com.example.reproductor.adapters.viewpagers.ListSongs;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -84,17 +83,28 @@ public class MusicLists extends Fragment {
 
         this.tabsListPager = view.findViewById(R.id.tabLayout_listas);
 
-        this.vp2_musicList.setAdapter(new PlayListFragmentAdapter(this,1));
+        this.vp2_musicList.setAdapter(new ListSongs(this,2));
 
-       /* new TabLayoutMediator(tabsListPager, vp2_musicList,
+        new TabLayoutMediator(tabsListPager, vp2_musicList,
                 new TabLayoutMediator.TabConfigurationStrategy() {
                     @Override
                     public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                        tab.setText("OBJECT " + (position + 1));
+
+                        switch (position){
+                            case 0:
+                                tab.setText("Reproduciendo");
+                                break;
+                            case 1:
+                                tab.setText("Folders");
+                                break;
+                            case 2:
+                                tab.setText("Stared");
+                                break;
+                        }
                     }
                 }
         ).attach();
-*/
+
 
 
 
