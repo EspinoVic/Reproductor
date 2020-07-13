@@ -19,7 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.reproductor.R;
-import com.example.reproductor.adapters.recyclers.CurrentPlayList;
+import com.example.reproductor.adapters.recyclers.PlayListAdapter;
 import com.example.reproductor.transitions.DetailsTransition;
 
 
@@ -33,7 +33,7 @@ public class ReproductorScreen extends Fragment {
     ImageButton btnPreviouse;
     ImageView btnPause;
     RecyclerView recyclerPlayer;
-    CurrentPlayList adapterSongsCurrentPlaying;
+    PlayListAdapter adapterSongsCurrentPlaying;
 
     LinearLayoutManager layoutManager =
             new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) ;
@@ -56,7 +56,7 @@ public class ReproductorScreen extends Fragment {
 
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        adapterSongsCurrentPlaying = new CurrentPlayList("unique");
+        adapterSongsCurrentPlaying = new PlayListAdapter("unique");
         recyclerPlayer.setAdapter(adapterSongsCurrentPlaying);
 
        // snapHelper.findTargetSnapPosition(layoutManager,10,0);

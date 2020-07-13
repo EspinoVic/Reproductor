@@ -83,7 +83,7 @@ public class MusicLists extends Fragment {
 
         this.tabsListPager = view.findViewById(R.id.tabLayout_listas);
 
-        this.vp2_musicList.setAdapter(new ListSongs(this,2));
+        this.vp2_musicList.setAdapter(new ListSongs(this,3));
 
         new TabLayoutMediator(tabsListPager, vp2_musicList,
                 new TabLayoutMediator.TabConfigurationStrategy() {

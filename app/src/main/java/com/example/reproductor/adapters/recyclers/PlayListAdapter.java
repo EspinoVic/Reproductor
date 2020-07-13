@@ -19,24 +19,39 @@ import java.util.List;
  * Adapter for temporary list of the player,
  * the one list that is playing currently.
  */
-public class CurrentPlayList extends RecyclerView.Adapter<CurrentPlayList.ViewHolderSong> {
+public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHolderSong> {
     @SuppressWarnings("unused")
-    private static final String TAG = CurrentPlayList.class.getSimpleName();
+    private static final String TAG = PlayListAdapter.class.getSimpleName();
 
     private static final int ITEM_COUNT = 20;
-    private String kindView;
+    private String kindView = "lista"; //default type
     private List<Song> songList;
 
-    public CurrentPlayList(String kindView) {
+
+    public PlayListAdapter(String kindView) {
         super();
 
         this.kindView = kindView;
-        // Create some items
-        songList = new ArrayList<>();
-        for (int i = 0; i < ITEM_COUNT; ++i) {
-            songList.add(new Song("The Four Horseman" +i,"Metallica","asd"));
 
-        }
+    }
+
+    public PlayListAdapter(List<Song> songList) {
+        super();
+        if(songList==null){
+            // Create some items
+            this.songList = new ArrayList<>();
+            for (int i = 0; i < ITEM_COUNT; ++i) {
+                this.songList.add(new Song("The Four Horseman" +i,"Metallica","asd"));
+
+            }
+        }else
+            this.songList = songList;
+    }
+
+    public PlayListAdapter(String kindView, List<Song> songList) {
+        this(songList);
+        this.kindView = kindView;
+    //    this.songList = songList;
     }
 
     @NonNull

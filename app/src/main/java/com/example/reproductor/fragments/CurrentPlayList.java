@@ -12,7 +12,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
+import com.example.reproductor.adapters.recyclers.PlayListAdapter;
+
+import java.util.List;
 
 
 /**
@@ -37,9 +41,14 @@ public class CurrentPlayList extends Fragment {
     RecyclerView recycler_songsCurrentlyPlaying;
  //   LinearLayoutManager layoutManager =
    //         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
+    private List<Song> songList;
 
     public CurrentPlayList() {
         // Required empty public constructor
+    }
+
+    public CurrentPlayList(List<Song> songList) {
+        this.songList = songList;
     }
 
     /**
@@ -79,7 +88,7 @@ public class CurrentPlayList extends Fragment {
 
 
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        this.recycler_songsCurrentlyPlaying.setAdapter(new com.example.reproductor.adapters.recyclers.CurrentPlayList("lista"));
+        this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(songList));
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
         //recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
         recycler_songsCurrentlyPlaying.setLayoutManager( new LinearLayoutManager(getActivity()));
