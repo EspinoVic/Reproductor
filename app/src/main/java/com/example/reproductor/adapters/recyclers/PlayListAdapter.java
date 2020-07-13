@@ -32,7 +32,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         super();
 
         this.kindView = kindView;
+        // Create some items
+        this.songList = new ArrayList<>();
+        for (int i = 0; i < ITEM_COUNT; ++i) {
+            this.songList.add(new Song("The Four Horseman" +i,"Metallica","asd"));
 
+        }
     }
 
     public PlayListAdapter(List<Song> songList) {
