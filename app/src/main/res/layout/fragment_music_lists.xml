@@ -71,6 +71,7 @@
         android:id="@+id/vp2_musicLists"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@id/divider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,10 +86,11 @@
         android:layout_height="1dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/divider"
         app:layout_constraintBottom_toTopOf="@+id/container_mini_player"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/container_mini_player"
@@ -96,9 +98,12 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:padding="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/gl_bottomMarg"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.5"
+        >
 
 
         <ImageView
@@ -108,10 +113,12 @@
             android:src="@drawable/kill_em_all"
             android:transitionName="transition_imgCurrentSong"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintRight_toLeftOf="@+id/gl_startName"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
+
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.5"/>
 
 
         <androidx.constraintlayout.widget.Guideline
@@ -119,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent=".2" />
+            app:layout_constraintGuide_percent=".25" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_topText"
@@ -134,27 +141,30 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="3"
-            android:gravity="center"
+            android:gravity="start"
+            android:singleLine="true"
             android:text="@string/name_song"
             android:textColor="@color/lyrics_primary"
-            android:textSize="15dp"
-
+            android:textSize="16sp"
             android:textStyle="bold"
             android:transitionName="transition_songName"
+            app:layout_constraintRight_toLeftOf="@id/btnPause"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
             app:layout_constraintTop_toTopOf="@id/gl_topText" />
 
         <TextView
             android:id="@+id/txt_authorName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="2"
-            android:gravity="center"
+            android:layout_marginTop="4dp"
+            android:gravity="left"
             android:text="@string/author_name"
             android:textColor="@color/lyric_secondary"
-            android:textSize="13dp"
+            android:textSize="14sp"
+            android:singleLine="true"
             android:transitionName="transition_authorName"
+            app:layout_constraintRight_toLeftOf="@id/btnPause"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
             app:layout_constraintTop_toBottomOf="@id/txt_songName" />
 
@@ -171,24 +181,19 @@
             android:src="@drawable/ic_pause_button"
             android:transitionName="transition_btnPause"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@id/btn_nextSong"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias=".5" />
 
-        <ImageButton
-            android:id="@+id/btn_nextSong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_skip_next_black_24dp"
-            android:transitionName="transition_btnNext"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_bottomMarg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.98" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

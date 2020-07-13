@@ -69,7 +69,7 @@ public class MusicLists extends Fragment {
             public void onClick(View view) {
                 FragmentNavigator.Extras extras = new FragmentNavigator.Extras.Builder()
                         .addSharedElement(btnPause, "transition_btnPause")
-                        .addSharedElement(btnNextSong,"transition_btnNext")
+                      //  .addSharedElement(btnNextSong,"transition_btnNext")
                         .addSharedElement(imgCurrentSong,"transition_imgCurrentSong")
                         .addSharedElement(txtSongName,"transition_songName")
                         .addSharedElement(txtAuthorNAme,"transition_authorName")
