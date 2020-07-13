@@ -1,4 +1,4 @@
-package com.example.reproductor.adapters;
+package com.example.reproductor.adapters.recyclers;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,15 +19,15 @@ import java.util.List;
  * Adapter for temporary list of the player,
  * the one list that is playing currently.
  */
-public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
+public class CurrentPlayList extends RecyclerView.Adapter<CurrentPlayList.ViewHolderSong> {
     @SuppressWarnings("unused")
-    private static final String TAG = Adapter.class.getSimpleName();
+    private static final String TAG = CurrentPlayList.class.getSimpleName();
 
     private static final int ITEM_COUNT = 20;
     private String kindView;
     private List<Song> songList;
 
-    public Adapter(String kindView) {
+    public CurrentPlayList(String kindView) {
         super();
 
         this.kindView = kindView;
@@ -41,7 +41,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolderSong onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View v = LayoutInflater.from(parent.getContext()).inflate(this.kindView.equals("lista")?R.layout.song_item_lista : R.layout.song_item_,
                 parent, false);
@@ -51,20 +51,21 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         v.findViewById(R.id.txt_authorName).setTransitionName("transition_authorName");
 
 
-        return new ViewHolder(v);
+        return new ViewHolderSong(v);
     }
 
     @Override
-    public void onViewAttachedToWindow(@NonNull ViewHolder holder) {
+    public void onViewAttachedToWindow(@NonNull ViewHolderSong holder) {
         super.onViewAttachedToWindow(holder);
-
+/*
         holder.songName.setTransitionName("transition_songName");
         holder.authorName.setTransitionName("transition_authorName");
         holder.img.setTransitionName("transition_imgCurrentSong");
+        */
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderSong holder, int position) {
         final Song song = songList.get(position);
 
 
@@ -82,12 +83,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolderSong extends RecyclerView.ViewHolder {
 
         private TextView songName;
         private TextView authorName;
         private ImageView img;
-        public ViewHolder(View itemView) {
+        public ViewHolderSong(View itemView) {
             super(itemView);
             songName = itemView.findViewById(R.id.txt_songName);
 
