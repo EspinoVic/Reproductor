@@ -1,6 +1,5 @@
 package com.example.reproductor.adapters.recyclers;
 
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,15 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
-import com.example.reproductor.fragments.CurrentPlayList;
-import com.example.reproductor.main.CurrentPlayListViewModel;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +19,13 @@ import java.util.List;
  * Adapter for temporary list of the player,
  * the one list that is playing currently.
  */
-public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHolderSong> {
+public class SongBigAdapter extends RecyclerView.Adapter<SongBigAdapter.ViewHolderSong> {
     @SuppressWarnings("unused")
-    private static final String TAG = PlayListAdapter.class.getSimpleName();
+    private static final String TAG = SongBigAdapter.class.getSimpleName();
 
-    private static final int ITEM_COUNT = 20;
     private List<Song> songList;
 
-    private ViewHolderSong.ClickListener clickListener;
-
-    public PlayListAdapter(ViewHolderSong.ClickListener clickListener,List<Song> songList) {
-        this.clickListener = clickListener;
+    public SongBigAdapter(List<Song> songList) {
         this.songList = songList;
     }
 
@@ -43,7 +33,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     @Override
     public ViewHolderSong onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item_lista,
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.song_item_,
                 parent, false);
 
         v.findViewById(R.id.img_song).setTransitionName("transition_imgCurrentSong");
@@ -51,7 +41,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         v.findViewById(R.id.txt_authorName).setTransitionName("transition_authorName");
 
 
-        return new ViewHolderSong(v,clickListener);
+        return new ViewHolderSong(v);
     }
 
     @Override
@@ -67,9 +57,14 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolderSong holder, int position) {
         final Song song = songList.get(position);
+
+
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
         holder.img.setImageResource(R.drawable.kill_em_all);
+
+
+
     }
 
     @Override
@@ -78,25 +73,18 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
 
-    public static class ViewHolderSong extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+    public static class ViewHolderSong extends RecyclerView.ViewHolder{
 
         private TextView songName;
         private TextView authorName;
         private ImageView img;
 
-        private ClickListener listener;
 
-        public ViewHolderSong(View itemView,ClickListener listener) {
+        public ViewHolderSong(View itemView) {
             super(itemView);
             songName = itemView.findViewById(R.id.txt_songName);
-
-
             authorName =  itemView.findViewById(R.id.txt_authorName);
-
             img=  itemView.findViewById(R.id.img_song);
-            this.listener = listener;
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
 
         }
 
@@ -112,24 +100,6 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
             return img;
         }
 
-        @Override
-        public void onClick(View view) {
-            if (listener != null) {
-                listener.onItemClicked(
-                        new Song(getSongName().getText().toString(),getAuthorName().getText().toString(),getImg().getDrawable())
-                );
-            }
-        }
-
-        @Override
-        public boolean onLongClick(View view) {
-            return false;
-        }
-
-        public interface ClickListener {
-            public void onItemClicked(Song song);
-            public boolean onItemLongClicked(int position);
-        }
     }
 
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
@@ -20,6 +21,8 @@ import android.widget.ImageView;
 
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.PlayListAdapter;
+import com.example.reproductor.adapters.recyclers.SongBigAdapter;
+import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.example.reproductor.transitions.DetailsTransition;
 
 
@@ -29,20 +32,22 @@ import com.example.reproductor.transitions.DetailsTransition;
 public class ReproductorScreen extends Fragment {
 
 
-    ImageButton btnNext;
-    ImageButton btnPreviouse;
-    ImageView btnPause;
-    RecyclerView recyclerPlayer;
-    PlayListAdapter adapterSongsCurrentPlaying;
+    private ImageButton btnNext;
+    private ImageButton btnPreviouse;
+    private ImageView btnPause;
+    private RecyclerView recyclerPlayer;
+    private SongBigAdapter adapterSongsCurrentPlaying;
 
-    LinearLayoutManager layoutManager =
+    private LinearLayoutManager layoutManager =
             new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false) ;
 
     //cambio por pagina, aun cuando se haga un scroll rapido, cambiara 1 vez (el lineal, la cantidad cambia por velocidad)
-    SnapHelper snapHelper = new PagerSnapHelper();
+    private SnapHelper snapHelper = new PagerSnapHelper();
 
     //for knowing the  current position that is been playing.
-    int indexSongCurrent = 0;
+    private int indexSongCurrent = 0;
+
+    private CurrentPlayListViewModel currentPlayListViewModel;
 
     public ReproductorScreen() {
         // Required empty public constructor
@@ -53,10 +58,11 @@ public class ReproductorScreen extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setSharedElementEnterTransition(new DetailsTransition());
+        currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
 
         View playerView = inflater.inflate(R.layout.fragment_reproductor_screen, container, false);
         recyclerPlayer = playerView.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        adapterSongsCurrentPlaying = new PlayListAdapter("unique");
+        adapterSongsCurrentPlaying = new SongBigAdapter(currentPlayListViewModel.getListSongMutableLiveData().getValue());
         recyclerPlayer.setAdapter(adapterSongsCurrentPlaying);
 
        // snapHelper.findTargetSnapPosition(layoutManager,10,0);
