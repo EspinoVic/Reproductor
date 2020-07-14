@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.FragmentNavigator;
 import androidx.viewpager2.widget.ViewPager2;
@@ -13,9 +15,12 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.viewpagers.ListSongs;
+import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -27,6 +32,10 @@ public class MusicLists extends Fragment {
 
     ViewPager2 vp2_musicList;
 
+    private CurrentPlayListViewModel currentPlayListViewModel;
+
+    View containerMiniPlayer;
+
     public MusicLists() {
         // Required empty public constructor
     }
@@ -37,11 +46,6 @@ public class MusicLists extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View containerMusicLists = inflater.inflate(R.layout.fragment_music_lists, container, false);
-
-
-
-
-
         return containerMusicLists;
     }
 
@@ -49,7 +53,7 @@ public class MusicLists extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        View containerMiniPlayer = view.findViewById(R.id.container_mini_player);
+        containerMiniPlayer = view.findViewById(R.id.container_mini_player);
         final View btnPause = containerMiniPlayer.findViewById(R.id.btnPause);
       // btnPause.setTransitionName("transitionN_btnPause");
 
@@ -105,6 +109,15 @@ public class MusicLists extends Fragment {
                 }
         ).attach();
 
+        //cambios en la cancion actual reproduciendo
+        currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(currentPlayListViewModel.getClass());
+        currentPlayListViewModel.getCurrentSongMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Song>() {
+            @Override
+            public void onChanged(Song currentSong) {
+                ((TextView)containerMiniPlayer.findViewById(R.id.txt_songName)).setText(currentSong.getSongName());
+                ((TextView)containerMiniPlayer.findViewById(R.id.txt_authorName)).setText(currentSong.getAuthor());
+            }
+        });
 
 
 

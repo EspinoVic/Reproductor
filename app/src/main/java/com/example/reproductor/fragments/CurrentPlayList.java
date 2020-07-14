@@ -23,8 +23,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  * Use the {@link CurrentPlayList#newInstance} factory method to
  * create an instance of this fragment.
- *
- *
+ * This kind of fragment will represent any playlist.
  *
  */
 public class CurrentPlayList extends Fragment {

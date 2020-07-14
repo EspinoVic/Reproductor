@@ -19,11 +19,7 @@ public class ListSongs extends FragmentStateAdapter {
     public ListSongs(@NonNull Fragment fragment, int tabsNum) {
         super(fragment);
         this.tabsNum = tabsNum;
-
-
     }
-
-
 
     @NonNull
     @Override
