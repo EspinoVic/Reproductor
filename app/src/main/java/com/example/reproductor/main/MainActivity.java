@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        currentPlayListViewModel = new ViewModelProvider(this).get(currentPlayListViewModel.getClass());
+        currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);
         List<Song> songList = new ArrayList<>();
         for (int i = 0; i < 20; ++i) {
-            songList.add(new Song("Seek & destroy " +i,"Metallica","asd"));
+            songList.add(new Song("Seek & destroy QWE " +i,"Metallica","asd"));
 
         }
         currentPlayListViewModel.getListSongMutableLiveData().setValue(songList);

@@ -110,7 +110,7 @@ public class MusicLists extends Fragment {
         ).attach();
 
         //cambios en la cancion actual reproduciendo
-        currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(currentPlayListViewModel.getClass());
+        currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
         currentPlayListViewModel.getCurrentSongMutableLiveData().observe(getViewLifecycleOwner(), new Observer<Song>() {
             @Override
             public void onChanged(Song currentSong) {

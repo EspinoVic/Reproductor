@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.PlayListAdapter;
+import com.example.reproductor.main.CurrentPlayListViewModel;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ import java.util.List;
  * This kind of fragment will represent any playlist.
  *
  */
-public class CurrentPlayList extends Fragment {
+public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHolderSong.ClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -41,10 +43,15 @@ public class CurrentPlayList extends Fragment {
  //   LinearLayoutManager layoutManager =
    //         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
     private List<Song> songList;
+    private CurrentPlayListViewModel currentPlayListViewModel;
 
     public CurrentPlayList() {
         // Required empty public constructor
+
     }
+
+
+
 
     public CurrentPlayList(List<Song> songList) {
         this.songList = songList;
@@ -85,13 +92,23 @@ public class CurrentPlayList extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
+        currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(songList));
+        this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getListSongMutableLiveData().getValue()));//o anonima
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
         //recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
         recycler_songsCurrentlyPlaying.setLayoutManager( new LinearLayoutManager(getActivity()));
 
 
+    }
+
+    @Override
+    public void onItemClicked(Song song) {
+        currentPlayListViewModel.getCurrentSongMutableLiveData().setValue(song);
+    }
+
+    @Override
+    public boolean onItemLongClicked(int position) {
+        return false;
     }
 }

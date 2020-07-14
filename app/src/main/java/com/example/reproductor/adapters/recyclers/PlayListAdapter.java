@@ -1,5 +1,6 @@
 package com.example.reproductor.adapters.recyclers;
 
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,10 +8,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
+import com.example.reproductor.fragments.CurrentPlayList;
+import com.example.reproductor.main.CurrentPlayListViewModel;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +33,17 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     private String kindView = "lista"; //default type
     private List<Song> songList;
 
+    private ViewHolderSong.ClickListener clickListener;
+
+    public PlayListAdapter(ViewHolderSong.ClickListener clickListener,List<Song> songList) {
+        this.clickListener = clickListener;
+        this.songList = songList;
+    }
 
     public PlayListAdapter(String kindView) {
         super();
 
         this.kindView = kindView;
-        // Create some items
         this.songList = new ArrayList<>();
         for (int i = 0; i < ITEM_COUNT; ++i) {
             this.songList.add(new Song("The Four Horseman" +i,"Metallica","asd"));
@@ -59,6 +70,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     //    this.songList = songList;
     }
 
+
+
     @NonNull
     @Override
     public ViewHolderSong onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -71,7 +84,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         v.findViewById(R.id.txt_authorName).setTransitionName("transition_authorName");
 
 
-        return new ViewHolderSong(v);
+        return new ViewHolderSong(v,clickListener);
     }
 
     @Override
@@ -103,12 +116,15 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
 
-    public static class ViewHolderSong extends RecyclerView.ViewHolder {
+    public static class ViewHolderSong extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
         private TextView songName;
         private TextView authorName;
         private ImageView img;
-        public ViewHolderSong(View itemView) {
+
+        private ClickListener listener;
+
+        public ViewHolderSong(View itemView,ClickListener listener) {
             super(itemView);
             songName = itemView.findViewById(R.id.txt_songName);
 
@@ -116,6 +132,9 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
             authorName =  itemView.findViewById(R.id.txt_authorName);
 
             img=  itemView.findViewById(R.id.img_song);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
 
         }
 
@@ -129,6 +148,25 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
         public ImageView getImg() {
             return img;
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (listener != null) {
+                listener.onItemClicked(
+                        new Song(getSongName().getText().toString(),getAuthorName().getText().toString(),getImg().getDrawable())
+                );
+            }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            return false;
+        }
+
+        public interface ClickListener {
+            public void onItemClicked(Song song);
+            public boolean onItemLongClicked(int position);
         }
     }
 

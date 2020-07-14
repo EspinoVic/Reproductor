@@ -1,13 +1,18 @@
 package com.example.reproductor.Models;
 
+import android.graphics.drawable.Drawable;
+
 public class Song {
 
+    private Drawable drawable;
     private String songName = "Unknown name song";
     private String author = "Unkown author";
 
     private String path;
 
     private boolean stared = false;
+
+
 
     public Song(String songName, String author, String path) {
         this.songName = songName;
@@ -20,6 +25,12 @@ public class Song {
         this.author = author;
         this.path = path;
         this.stared = stared;
+    }
+
+    public Song(String songName, String author, Drawable drawable) {
+        this.songName = songName;
+        this.author = author;
+        this.drawable = drawable;
     }
 
     public String getSongName() {

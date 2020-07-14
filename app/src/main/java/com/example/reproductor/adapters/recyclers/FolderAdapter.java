@@ -52,7 +52,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
         return folderList.size();
     }
 
-    public static class ViewHolderFolder extends RecyclerView.ViewHolder{
+    public static class ViewHolderFolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
         private TextView txtPath;
         private TextView txtNameFolder;
@@ -70,6 +70,16 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
         public TextView getTxtNameFolder() {
             return txtNameFolder;
+        }
+
+        @Override
+        public void onClick(View view) {
+
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            return false;
         }
     }
 }
