@@ -8,12 +8,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.reproductor.IO.MusicScan;
 import com.example.reproductor.Models.Folder;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolderFolder> {
 
@@ -21,10 +25,19 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
     public FolderAdapter() {
         folderList = new ArrayList<>();
-        for (int i = 0; i < 20; ++i) {
-            folderList.add(new Folder("Folder " +i,"Ruta "+ i));
+        MusicScan musicScan = new MusicScan();
+        HashMap<String, ArrayList<String>> availableDirectories = musicScan.getAvailableDirectories();
 
+        Set<String> strings = availableDirectories.keySet();
+        for(String rutaActual:strings){
+            File file = new File(rutaActual);
+            String name = file.getName();
+            folderList.add(new Folder(name,rutaActual));
         }
+
+        /*for (int i = 0; i < 20; ++i) {
+            folderList.add(new Folder("Folder " +i,"Ruta "+ i));
+        }*/
     }
 
     public FolderAdapter(List<Folder> folderList) {

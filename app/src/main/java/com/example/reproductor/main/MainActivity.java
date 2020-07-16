@@ -25,6 +25,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        MusicScan musicScan = new MusicScan();
-        HashMap<String, ArrayList<String>> availableDirectories = musicScan.getAvailableDirectories();
 
         currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);
         List<Song> songList = new ArrayList<>();
