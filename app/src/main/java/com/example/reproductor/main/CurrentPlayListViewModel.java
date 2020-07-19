@@ -10,13 +10,13 @@ import java.util.List;
 public class CurrentPlayListViewModel extends ViewModel {
 
 
-    private MutableLiveData<List<Song>> listSongMutableLiveData;
+    private MutableLiveData<List<Song>> currentPlayingSongListMutableLiveData;
 
-    public MutableLiveData<List<Song>> getListSongMutableLiveData() {
-        if (listSongMutableLiveData == null) {
-            listSongMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<List<Song>> getCurrentPlayingSongListMutableLiveData() {
+        if (currentPlayingSongListMutableLiveData == null) {
+            currentPlayingSongListMutableLiveData = new MutableLiveData<>();
         }
-        return listSongMutableLiveData;
+        return currentPlayingSongListMutableLiveData;
     }
 
     private MutableLiveData<Song> currentSongMutableLiveData;
@@ -28,8 +28,19 @@ public class CurrentPlayListViewModel extends ViewModel {
         return currentSongMutableLiveData;
     }
 
-    private MutableLiveData<Integer> indexCurrentPlayingSong;
 
+    private MutableLiveData<List<Song>> directoryPlayListCurrentObservedMutableLiveData;
+
+    public MutableLiveData<List<Song>> getDirectoryPlayListCurrentObservedMutableLiveData() {
+        if(directoryPlayListCurrentObservedMutableLiveData==null){
+            directoryPlayListCurrentObservedMutableLiveData = new MutableLiveData<>();
+        }
+        return directoryPlayListCurrentObservedMutableLiveData;
+    }
+
+    @Deprecated
+    private MutableLiveData<Integer> indexCurrentPlayingSong;
+    @Deprecated
     public MutableLiveData<Integer> getIndexCurrentPlayingSong() {
         if (indexCurrentPlayingSong == null) {
             indexCurrentPlayingSong = new MutableLiveData<>();
@@ -41,6 +52,7 @@ public class CurrentPlayListViewModel extends ViewModel {
     private void loadUsers() {
         // Do an asynchronous operation to fetch users.
     }
+
 
 
 

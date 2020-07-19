@@ -8,36 +8,36 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.reproductor.IO.MusicScan;
+import com.example.reproductor.IO.FolderMusicAvailableScan;
+import com.example.reproductor.IO.ListMusicFiles;
 import com.example.reproductor.Models.Folder;
-import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolderFolder> {
 
     private List<Folder> folderList;
+    private ViewHolderFolder.ClickListener clickListener;
+  //  private static MusicScan musicScan = new MusicScan();
+    private static FolderMusicAvailableScan musicScan = new FolderMusicAvailableScan();
+    //public static HashMap<String, ArrayList<String>> availableDirectories;
+    public static  ArrayList<String> availableDirectories;
 
-    public FolderAdapter() {
+    public FolderAdapter(ViewHolderFolder.ClickListener clickListener) {
+        this.clickListener = clickListener;
         folderList = new ArrayList<>();
-        MusicScan musicScan = new MusicScan();
-        HashMap<String, ArrayList<String>> availableDirectories = musicScan.getAvailableDirectories();
 
-        Set<String> strings = availableDirectories.keySet();
-        for(String rutaActual:strings){
+        availableDirectories = musicScan.getAvailableDirectories();
+
+        for(String rutaActual:availableDirectories){
             File file = new File(rutaActual);
             String name = file.getName();
             folderList.add(new Folder(name,rutaActual));
         }
 
-        /*for (int i = 0; i < 20; ++i) {
-            folderList.add(new Folder("Folder " +i,"Ruta "+ i));
-        }*/
     }
 
     public FolderAdapter(List<Folder> folderList) {
@@ -49,7 +49,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     public ViewHolderFolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate( R.layout.folder_item , parent, false);
 
-        return new ViewHolderFolder(v);
+        return new ViewHolderFolder(v,this.clickListener);
     }
 
     @Override
@@ -67,14 +67,18 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
     public static class ViewHolderFolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
 
+        private ClickListener listener;
         private TextView txtPath;
         private TextView txtNameFolder;
 
-        public ViewHolderFolder(@NonNull View itemView) {
+        public ViewHolderFolder(@NonNull View itemView,ClickListener listener) {
             super(itemView);
 
             txtNameFolder = itemView.findViewById(R.id.txt_folder);
             txtPath = itemView.findViewById(R.id.txt_path);
+            this.listener = listener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         public TextView getTxtPath() {
@@ -87,12 +91,22 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
 
         @Override
         public void onClick(View view) {
-
+            if(listener!=null){
+                listener.onItemClicked(getAdapterPosition(),this.getTxtPath().getText().toString());
+            }
         }
 
         @Override
         public boolean onLongClick(View view) {
+            if(listener!=null){
+                return listener.onItemLongClicked(getAdapterPosition());
+            }
             return false;
+        }
+
+        public interface ClickListener {
+            public void onItemClicked(int position,String pathItemClicked);
+            public boolean onItemLongClicked(int position);
         }
     }
 }

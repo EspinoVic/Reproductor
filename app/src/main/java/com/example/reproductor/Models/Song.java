@@ -7,7 +7,7 @@ public class Song {
     private Drawable drawable;
     private String songName = "Unknown name song";
     private String author = "Unkown author";
-
+    private String album = "Unknown Album";
     private String path;
 
     private boolean stared = false;
@@ -33,6 +33,13 @@ public class Song {
         this.drawable = drawable;
     }
 
+    public Song(String songName, String author, String album, String path) {
+        this.songName = songName;
+        this.author = author;
+        this.album = album;
+        this.path = path;
+    }
+
     public String getSongName() {
         return songName;
     }
@@ -51,5 +58,13 @@ public class Song {
 
     public void setStared(boolean stared) {
         this.stared = stared;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 }

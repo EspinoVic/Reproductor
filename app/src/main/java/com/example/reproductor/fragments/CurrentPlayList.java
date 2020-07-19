@@ -94,7 +94,15 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
 
         currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
-        this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getListSongMutableLiveData().getValue()));//o anonima
+
+        if(getArguments()!=null){
+            if(getArguments().getString("tipo_carga").equals("directorio_play_list")){
+                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue()));//o anonima
+            }
+        }else{
+            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue()));//o anonima
+        }
+
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
         //recycler_songsCurrentlyPlaying.setLayoutManager(layoutManager);
         recycler_songsCurrentlyPlaying.setLayoutManager( new LinearLayoutManager(getActivity()));

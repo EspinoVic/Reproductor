@@ -5,8 +5,8 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.reproductor.Models.Song;
-import com.example.reproductor.fragments.Directorios;
 import com.example.reproductor.fragments.CurrentPlayList;
+import com.example.reproductor.fragments.Directorios;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class ListSongs extends FragmentStateAdapter {
                 return new Directorios();
             case 2:
                 for (int i = 0; i < 20; ++i) {
-                    songList.add(new Song("Seek & destroy " +i,"Metallica","asd"));
+                    songList.add(new Song("Seek & destroy Star" +i,"Metallica","asd"));
 
                 }
                 return new CurrentPlayList(songList);

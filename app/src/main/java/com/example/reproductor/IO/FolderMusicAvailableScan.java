@@ -2,8 +2,6 @@ package com.example.reproductor.IO;
 
 import android.os.Environment;
 
-import com.example.reproductor.utilities.ListMusicFiles;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -13,13 +11,18 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MusicScan {
+/**
+ * this class is in charge of scan or saver the routes of folders availables.
+ * And can save the directories availables in a file.
+ * And also read that file and return it in arratList way.
+ */
+public class FolderMusicAvailableScan {
 
     File directorySaveMusicList = new File(Environment.getExternalStorageDirectory(),"PlayerVic");
-    File fileHashMapSerialized;
+    File fileListDirectoriesMusicaAvailable;
 
-    public MusicScan() {
-        fileHashMapSerialized =  new File( directorySaveMusicList,"test.txt");
+    public FolderMusicAvailableScan() {
+        fileListDirectoriesMusicaAvailable =  new File( directorySaveMusicList,"test.txt");
     }
 
     public void saveAvailableDirectories(){
@@ -29,17 +32,17 @@ public class MusicScan {
 
         //pathFile.createNewFile();
         //  }
-        if(!fileHashMapSerialized.exists()) {
+        if(!fileListDirectoriesMusicaAvailable.exists()) {
             try {
-                fileHashMapSerialized.createNewFile();
+                fileListDirectoriesMusicaAvailable.createNewFile();
                 ListMusicFiles listMusicFiles = new ListMusicFiles();
                 listMusicFiles.getFolder();
-                 HashMap<String, ArrayList<String>> mappintFoldersAvailable =  listMusicFiles.getMappintFoldersAvailable();
+                ArrayList<String> foldersAvailable =  listMusicFiles.getListFolerMusicAvailable();
 
                 FileOutputStream fileOut =
-                        new FileOutputStream(fileHashMapSerialized);
+                        new FileOutputStream(fileListDirectoriesMusicaAvailable);
                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
-                out.writeObject(mappintFoldersAvailable);
+                out.writeObject(foldersAvailable);
                 out.close();
                 fileOut.close();
             } catch (IOException e) {
@@ -50,13 +53,13 @@ public class MusicScan {
     }
 
 
-    public HashMap<String, ArrayList<String>> getAvailableDirectories(){
-        HashMap<String, ArrayList<String>> mappintFoldersAvailable =  null;
+    public ArrayList<String> getAvailableDirectories(){
+        ArrayList<String> foldersAvailable =  null;
         try {
            // FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
-            FileInputStream fileIn = new FileInputStream(fileHashMapSerialized);
+            FileInputStream fileIn = new FileInputStream(fileListDirectoriesMusicaAvailable);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            mappintFoldersAvailable = (HashMap<String, ArrayList<String>>) in.readObject();
+            foldersAvailable = ( ArrayList<String>) in.readObject();
             in.close();
             fileIn.close();
         } catch (IOException i) {
@@ -65,7 +68,7 @@ public class MusicScan {
             System.out.println("Employee class not found");
             c.printStackTrace();
         }
-        return mappintFoldersAvailable;
+        return foldersAvailable;
 
     }
 
