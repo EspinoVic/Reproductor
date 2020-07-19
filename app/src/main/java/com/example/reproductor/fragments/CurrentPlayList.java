@@ -112,6 +112,7 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
 
     @Override
     public void onItemClicked(Song song) {
+        //TODO cambiar la playlist también, en caso de que sea otra playlist v:
         currentPlayListViewModel.getCurrentSongMutableLiveData().setValue(song);
     }
 

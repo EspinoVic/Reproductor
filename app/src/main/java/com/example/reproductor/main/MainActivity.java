@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
+import com.example.reproductor.IO.FolderDirectoriesWriteRead;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 
@@ -20,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        FolderDirectoriesWriteRead folderDirectoriesWriteRead = new FolderDirectoriesWriteRead();
+        folderDirectoriesWriteRead.saveAvailableDirectories();
 
         currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);
         List<Song> songList = new ArrayList<>();

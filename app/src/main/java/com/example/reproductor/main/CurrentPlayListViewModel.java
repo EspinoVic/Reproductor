@@ -34,21 +34,12 @@ public class CurrentPlayListViewModel extends ViewModel {
     public MutableLiveData<List<Song>> getDirectoryPlayListCurrentObservedMutableLiveData() {
         if(directoryPlayListCurrentObservedMutableLiveData==null){
             directoryPlayListCurrentObservedMutableLiveData = new MutableLiveData<>();
+            loadUsers();//asyncronous operation.
+
         }
         return directoryPlayListCurrentObservedMutableLiveData;
     }
-
-    @Deprecated
-    private MutableLiveData<Integer> indexCurrentPlayingSong;
-    @Deprecated
-    public MutableLiveData<Integer> getIndexCurrentPlayingSong() {
-        if (indexCurrentPlayingSong == null) {
-            indexCurrentPlayingSong = new MutableLiveData<>();
-            loadUsers();//asyncronous operation.
-        }
-        return indexCurrentPlayingSong;
-
-    }
+    
     private void loadUsers() {
         // Do an asynchronous operation to fetch users.
     }
