@@ -9,22 +9,26 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * this class is in charge of scan or saver the routes of folders availables.
  * And can save the directories availables in a file.
  * And also read that file and return it in arratList way.
  */
-public class FolderMusicAvailableScan {
+public class FolderDirectoriesWriteRead {
 
     File directorySaveMusicList = new File(Environment.getExternalStorageDirectory(),"PlayerVic");
     File fileListDirectoriesMusicaAvailable;
 
-    public FolderMusicAvailableScan() {
+    public FolderDirectoriesWriteRead() {
         fileListDirectoriesMusicaAvailable =  new File( directorySaveMusicList,"test.txt");
     }
 
+    /**
+     * This method save the direcctories where is music available inside a txt file.
+     * But first call
+     * @see DirectoriesMusicAvailableScan to scan de storage, an then de list of directories are written.
+     */
     public void saveAvailableDirectories(){
         // File nuevaCarpeta = new File("/storage/emulated/0","micarpeta");
         boolean mkdirs = directorySaveMusicList.mkdirs();
@@ -35,9 +39,9 @@ public class FolderMusicAvailableScan {
         if(!fileListDirectoriesMusicaAvailable.exists()) {
             try {
                 fileListDirectoriesMusicaAvailable.createNewFile();
-                ListMusicFiles listMusicFiles = new ListMusicFiles();
-                listMusicFiles.getFolder();
-                ArrayList<String> foldersAvailable =  listMusicFiles.getListFolerMusicAvailable();
+                DirectoriesMusicAvailableScan directoriesMusicAvailableScan = new DirectoriesMusicAvailableScan();
+                directoriesMusicAvailableScan.getFolder();
+                ArrayList<String> foldersAvailable =  directoriesMusicAvailableScan.getListFolerMusicAvailable();
 
                 FileOutputStream fileOut =
                         new FileOutputStream(fileListDirectoriesMusicaAvailable);

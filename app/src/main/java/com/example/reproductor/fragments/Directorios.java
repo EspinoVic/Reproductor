@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.FolderAdapter;
 import com.example.reproductor.main.CurrentPlayListViewModel;
-import com.example.reproductor.IO.ListMusicFiles;
+import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
 
 
 public class Directorios extends Fragment implements FolderAdapter.ViewHolderFolder.ClickListener{
@@ -59,7 +59,7 @@ public class Directorios extends Fragment implements FolderAdapter.ViewHolderFol
 
 
 
-       currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().setValue(ListMusicFiles.getListSongOfDirectory(pathItemClicked,getContext()));
+       currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().setValue(DirectoriesMusicAvailableScan.getListSongOfDirectory(pathItemClicked,getContext()));
         Bundle bundle = new Bundle();
         bundle.putString("tipo_carga","directorio_play_list");
         Navigation.findNavController(recycler_pathsSongs).navigate(R.id.action_musicLists_to_currentPlayList,

@@ -7,21 +7,18 @@ import android.os.Environment;
 import android.provider.MediaStore;
 
 import com.example.reproductor.Models.Song;
-import com.example.reproductor.adapters.recyclers.FolderAdapter;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
  * This class scans the storage in order to found directories where would there be songs in.
  * For write and read this directories see
- * @see FolderMusicAvailableScan
+ * @see FolderDirectoriesWriteRead
  */
-public class ListMusicFiles {
+public class DirectoriesMusicAvailableScan {
 
     /**
      * The key "string" will be where the route available will be stored. -> extSdcard/metallica/kill_em_all
@@ -30,7 +27,7 @@ public class ListMusicFiles {
     private ArrayList<String> listFolerMusicAvailable;
 
 
-    public ListMusicFiles() {
+    public DirectoriesMusicAvailableScan() {
         this.listFolerMusicAvailable = new ArrayList<>();
     }
 

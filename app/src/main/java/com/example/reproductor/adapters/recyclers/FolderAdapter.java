@@ -8,8 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.reproductor.IO.FolderMusicAvailableScan;
-import com.example.reproductor.IO.ListMusicFiles;
+import com.example.reproductor.IO.FolderDirectoriesWriteRead;
 import com.example.reproductor.Models.Folder;
 import com.example.reproductor.R;
 
@@ -22,7 +21,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     private List<Folder> folderList;
     private ViewHolderFolder.ClickListener clickListener;
   //  private static MusicScan musicScan = new MusicScan();
-    private static FolderMusicAvailableScan musicScan = new FolderMusicAvailableScan();
+    private static FolderDirectoriesWriteRead musicScan = new FolderDirectoriesWriteRead();
     //public static HashMap<String, ArrayList<String>> availableDirectories;
     public static  ArrayList<String> availableDirectories;
 
