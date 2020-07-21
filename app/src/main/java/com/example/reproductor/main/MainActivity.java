@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private CurrentPlayListViewModel currentPlayListViewModel;
+    public static CurrentPlayListViewModel currentPlayListViewModel;
     public static FolderDirectoriesWriteRead folderDirectoriesWriteRead;
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
          folderDirectoriesWriteRead = new FolderDirectoriesWriteRead();
         currentPlayListViewModel.getDirectoriesAvailablesList().setValue( folderDirectoriesWriteRead.saveAvailableDirectories());
+        currentPlayListViewModel.getDirectoriesAvailablesList().getValue( );
 
         List<Song> songList = new ArrayList<>();
         for (int i = 0; i < 20; ++i) {

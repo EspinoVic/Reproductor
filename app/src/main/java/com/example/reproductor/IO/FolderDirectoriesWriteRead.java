@@ -56,7 +56,7 @@ public class FolderDirectoriesWriteRead {
             }
         }
 
-        return foldersAvailable;
+        return foldersAvailable!=null?foldersAvailable:getAvailableDirectories();
     }
 
 

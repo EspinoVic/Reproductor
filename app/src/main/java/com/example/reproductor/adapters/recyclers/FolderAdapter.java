@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.reproductor.IO.FolderDirectoriesWriteRead;
 import com.example.reproductor.Models.Folder;
 import com.example.reproductor.R;
+import com.example.reproductor.main.MainActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,7 +22,6 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
     private List<Folder> folderList;
     private ViewHolderFolder.ClickListener clickListener;
   //  private static MusicScan musicScan = new MusicScan();
-    private static FolderDirectoriesWriteRead musicScan = new FolderDirectoriesWriteRead();
     //public static HashMap<String, ArrayList<String>> availableDirectories;
     public static  ArrayList<String> availableDirectories;
 
@@ -29,7 +29,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.ViewHolder
         this.clickListener = clickListener;
         folderList = new ArrayList<>();
 
-        availableDirectories = musicScan.getAvailableDirectories();
+        availableDirectories = (ArrayList<String>) MainActivity.currentPlayListViewModel.getDirectoriesAvailablesList().getValue();
 
         for(String rutaActual:availableDirectories){
             File file = new File(rutaActual);
