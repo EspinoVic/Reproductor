@@ -1,10 +1,7 @@
 package com.example.reproductor.IO;
 
-import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Environment;
@@ -13,9 +10,7 @@ import android.provider.MediaStore;
 import com.example.reproductor.Models.Song;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +36,7 @@ public class DirectoriesMusicAvailableScan {
         return listFolerMusicAvailable;
     }
 
-    public void getFolder(){
+    public ArrayList<String> startScan(){
         String path = Environment.getExternalStorageDirectory().toString();
         // File f = new File("/storage/emulated/0");
         File f = new File("/storage/extSdCard");
@@ -69,7 +64,7 @@ public class DirectoriesMusicAvailableScan {
 
         getFilesAvailable(f);//para root
         getFoldersAvailable(directoriesWithOutSystem);
-
+        return listFolerMusicAvailable;
     }
 
     /**

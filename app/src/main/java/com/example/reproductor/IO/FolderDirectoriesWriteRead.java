@@ -28,20 +28,22 @@ public class FolderDirectoriesWriteRead {
      * This method save the direcctories where is music available inside a txt file.
      * But first call
      * @see DirectoriesMusicAvailableScan to scan de storage, an then de list of directories are written.
+     * @return
      */
-    public void saveAvailableDirectories(){
+    public ArrayList<String> saveAvailableDirectories(){
         // File nuevaCarpeta = new File("/storage/emulated/0","micarpeta");
         boolean mkdirs = directorySaveMusicList.mkdirs();
         String path = Environment.getExternalStorageDirectory().toString();
 
         //pathFile.createNewFile();
         //  }
+        ArrayList<String> foldersAvailable = null;
+        //SI no existe el archivo , entonces hará un escaneo.
         if(!fileListDirectoriesMusicaAvailable.exists()) {
             try {
                 fileListDirectoriesMusicaAvailable.createNewFile();
                 DirectoriesMusicAvailableScan directoriesMusicAvailableScan = new DirectoriesMusicAvailableScan();
-                directoriesMusicAvailableScan.getFolder();
-                ArrayList<String> foldersAvailable =  directoriesMusicAvailableScan.getListFolerMusicAvailable();
+                 foldersAvailable =  directoriesMusicAvailableScan.startScan();;
 
                 FileOutputStream fileOut =
                         new FileOutputStream(fileListDirectoriesMusicaAvailable);
@@ -54,6 +56,7 @@ public class FolderDirectoriesWriteRead {
             }
         }
 
+        return foldersAvailable;
     }
 
 

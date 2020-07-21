@@ -45,9 +45,15 @@ public class CurrentPlayListViewModel extends ViewModel {
     }
 
 
+    private MutableLiveData<List<String>> directoriesAvailablesList;
 
-
-   // public static List<Song> currentPlayingList;
+    public MutableLiveData<List<String>> getDirectoriesAvailablesList() {
+        if(directoriesAvailablesList == null){
+            directoriesAvailablesList = new MutableLiveData<>();
+        }
+        return directoriesAvailablesList;
+    }
+    // public static List<Song> currentPlayingList;
     //public static int indexCurrentPlayingSong;
 
 
