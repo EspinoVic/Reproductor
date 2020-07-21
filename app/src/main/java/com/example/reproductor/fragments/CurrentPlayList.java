@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -92,15 +93,24 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        final PlayListAdapter.ViewHolderSong.ClickListener clickListenerThis = this;
+
         currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
 
         if(getArguments()!=null){
             if(getArguments().getString("tipo_carga").equals("directorio_play_list")){
-                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue(),getContext()));//o anonima
+                currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Song>>() {
+                    @Override
+                    public void onChanged(List<Song> songs) {
+                        //trucaso haha. Instead of this, then a final object
+                        recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(clickListenerThis,songs));//o anonima
+
+                    }
+                });
             }
         }else{
-            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue(),getContext()));//o anonima
+            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue()));//o anonima
         }
 
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());

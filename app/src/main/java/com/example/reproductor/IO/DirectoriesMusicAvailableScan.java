@@ -157,7 +157,7 @@ public class DirectoriesMusicAvailableScan {
                 Long albumID = c.getLong(4);
 
               String coverArtPath = getCoverArtPath(context, albumID);
-              Drawable img = Drawable.createFromPath(coverArtPath);
+            //  Drawable img = Drawable.createFromPath(coverArtPath);
 
              /*   String coverPath = cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Albums.ALBUM_ART));
                 Drawable img = Drawable.createFromPath(coverPath);
@@ -166,7 +166,7 @@ public class DirectoriesMusicAvailableScan {
 */
                 Song song = new Song(name,artist,pathSong,album,albumID);
                 song.setPathCoverArt(coverArtPath);
-                song.setDrawable(img);
+             //   song.setDrawable(img);
                 listSongFolder.add(song);
             }
 

@@ -32,15 +32,13 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     private static final String TAG = PlayListAdapter.class.getSimpleName();
 
     private static final int ITEM_COUNT = 20;
-    private Context context;
     private List<Song> songList;
 
     private ViewHolderSong.ClickListener clickListener;
 
-    public PlayListAdapter(ViewHolderSong.ClickListener clickListener, List<Song> songList, Context context) {
+    public PlayListAdapter(ViewHolderSong.ClickListener clickListener, List<Song> songList) {
         this.clickListener = clickListener;
         this.songList = songList;
-        this.context = context;
     }
 
     @NonNull
