@@ -97,10 +97,10 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
 
         if(getArguments()!=null){
             if(getArguments().getString("tipo_carga").equals("directorio_play_list")){
-                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue()));//o anonima
+                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue(),getContext()));//o anonima
             }
         }else{
-            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue()));//o anonima
+            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue(),getContext()));//o anonima
         }
 
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());

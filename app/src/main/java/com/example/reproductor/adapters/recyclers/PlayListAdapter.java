@@ -1,5 +1,6 @@
 package com.example.reproductor.adapters.recyclers;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.fragments.CurrentPlayList;
@@ -30,13 +32,15 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     private static final String TAG = PlayListAdapter.class.getSimpleName();
 
     private static final int ITEM_COUNT = 20;
+    private Context context;
     private List<Song> songList;
 
     private ViewHolderSong.ClickListener clickListener;
 
-    public PlayListAdapter(ViewHolderSong.ClickListener clickListener,List<Song> songList) {
+    public PlayListAdapter(ViewHolderSong.ClickListener clickListener, List<Song> songList, Context context) {
         this.clickListener = clickListener;
         this.songList = songList;
+        this.context = context;
     }
 
     @NonNull
@@ -69,7 +73,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         final Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
-        holder.img.setImageResource(R.drawable.kill_em_all);
+        if(song.getAlbumID()==0)
+            holder.img.setImageResource(R.drawable.ic_baseline_album_24);
+        else{
+           // Drawable img = Drawable.createFromPath(song.getPathCoverArt());
+            holder.img.setImageDrawable(song.getDrawable());
+        }
     }
 
     @Override

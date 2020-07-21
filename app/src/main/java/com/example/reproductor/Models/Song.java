@@ -1,5 +1,6 @@
 package com.example.reproductor.Models;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 public class Song {
@@ -9,6 +10,9 @@ public class Song {
     private String author = "Unkown author";
     private String album = "Unknown Album";
     private String path;
+
+    private Long albumID = 0l;
+    private String pathCoverArt;
 
     private boolean stared = false;
 
@@ -33,11 +37,12 @@ public class Song {
         this.drawable = drawable;
     }
 
-    public Song(String songName, String author, String album, String path) {
+    public Song(String songName, String author, String album, String path,Long albumID) {
         this.songName = songName;
         this.author = author;
         this.album = album;
         this.path = path;
+        this.albumID= albumID;
     }
 
     public String getSongName() {
@@ -66,5 +71,30 @@ public class Song {
 
     public void setAlbum(String album) {
         this.album = album;
+    }
+
+
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
+    }
+
+    public Long getAlbumID() {
+        return albumID;
+    }
+
+    public void setAlbumID(Long albumID) {
+        this.albumID = albumID;
+    }
+
+    public String getPathCoverArt() {
+        return pathCoverArt;
+    }
+
+    public void setPathCoverArt(String pathCoverArt) {
+        this.pathCoverArt = pathCoverArt;
     }
 }
