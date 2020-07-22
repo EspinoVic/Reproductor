@@ -1,5 +1,6 @@
 package com.example.reproductor.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,7 +103,7 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
             if(getArguments().getString("tipo_carga").equals("directorio_play_list")){
                 currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Song>>() {
                     @Override
-                    public void onChanged(List<Song> songs) {
+                    public void onChanged(final List<Song> songs) {
                         //trucaso haha. Instead of this, then a final object
                         recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(clickListenerThis,songs));//o anonima
 

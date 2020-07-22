@@ -67,14 +67,28 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolderSong holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolderSong holder, int position) {
         final Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
-        if(song.getAlbumID()==0)
+        if(song.getDrawable()==null){
             holder.img.setImageResource(R.drawable.ic_baseline_album_24);
+            //if it's null, then will go an create it from the path,
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String pathCoverArt = song.getPathCoverArt();
+                    if(pathCoverArt != null){
+                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
+                        song.setDrawable(fromPath);
+                    }
+                    // holder.img.setImageDrawable();//only in the UIThread, then I implement asyncrhounus album art creation.
+                }
+            }).start();
+        }
         else{
            // Drawable img = Drawable.createFromPath(song.getPathCoverArt());
+
             holder.img.setImageDrawable(song.getDrawable());
         }
     }
