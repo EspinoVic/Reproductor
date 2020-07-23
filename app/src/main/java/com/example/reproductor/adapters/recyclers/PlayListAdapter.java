@@ -17,14 +17,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Placeholder;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.fragments.CurrentPlayList;
 import com.example.reproductor.main.CurrentPlayListViewModel;
+import com.example.reproductor.main.MainActivity;
 
 import org.w3c.dom.Text;
 
@@ -88,10 +95,21 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                     String pathCoverArt = song.getPathCoverArt();
                     if(pathCoverArt != null){
 //                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
-                        Bitmap bitmap = BitmapFactory.decodeFile(pathCoverArt);
+                     //   Bitmap bitmap = BitmapFactory.decodeFile(pathCoverArt);
 
                         //song.setBitmap(getCroppedBitmap(bitmap));
-                        song.setBitmap(getRoundedCornerBitmap(bitmap,100));
+                        //song.setBitmap(getRoundedCornerBitmap(bitmap,100));
+                        final RequestBuilder requestBuilder = Glide.with(MainActivity.getContext())
+                                .load(pathCoverArt)
+                                .centerCrop()
+//                                .apply(RequestOptions.circleCropTransform())
+                                .apply(new RequestOptions().transform(new CenterCrop(), new RoundedCorners(35)));
+                        MainActivity.getInstance().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                requestBuilder.into(holder.img);
+                            }
+                        });
                     }
                     // holder.img.setImageDrawable();//only in the UIThread, then I implement asyncrhounus album art creation.
                 }
