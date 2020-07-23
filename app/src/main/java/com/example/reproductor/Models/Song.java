@@ -5,7 +5,7 @@ import android.graphics.drawable.Drawable;
 
 public class Song {
 
-    private Drawable drawable;
+//    private Drawable drawable;
     private String songName = "Unknown name song";
     private String author = "Unkown author";
     private String album = "Unknown Album";
@@ -16,7 +16,7 @@ public class Song {
 
     private boolean stared = false;
 
-
+    private Bitmap bitmap;
 
     public Song(String songName, String author, String path) {
         this.songName = songName;
@@ -34,7 +34,7 @@ public class Song {
     public Song(String songName, String author, Drawable drawable) {
         this.songName = songName;
         this.author = author;
-        this.drawable = drawable;
+//        this.drawable = drawable;
     }
 
     public Song(String songName, String author, String album, String path,Long albumID) {
@@ -73,6 +73,14 @@ public class Song {
         this.album = album;
     }
 
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
+    }
+/*
 
     public Drawable getDrawable() {
         return drawable;
@@ -81,6 +89,7 @@ public class Song {
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
+*/
 
     public Long getAlbumID() {
         return albumID;

@@ -1,6 +1,14 @@
 package com.example.reproductor.adapters.recyclers;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +79,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         final Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
-        if(song.getDrawable()==null){
+        if(song.getBitmap()==null){
             holder.img.setImageResource(R.drawable.ic_baseline_album_24);
             //if it's null, then will go an create it from the path,
             new Thread(new Runnable() {
@@ -79,8 +87,11 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                 public void run() {
                     String pathCoverArt = song.getPathCoverArt();
                     if(pathCoverArt != null){
-                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
-                        song.setDrawable(fromPath);
+//                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
+                        Bitmap bitmap = BitmapFactory.decodeFile(pathCoverArt);
+
+                        //song.setBitmap(getCroppedBitmap(bitmap));
+                        song.setBitmap(getRoundedCornerBitmap(bitmap,100));
                     }
                     // holder.img.setImageDrawable();//only in the UIThread, then I implement asyncrhounus album art creation.
                 }
@@ -89,8 +100,51 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         else{
            // Drawable img = Drawable.createFromPath(song.getPathCoverArt());
 
-            holder.img.setImageDrawable(song.getDrawable());
+            holder.img.setImageBitmap(song.getBitmap());
         }
+    }
+    public Bitmap getCroppedBitmap(Bitmap bitmap) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(),
+                bitmap.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        // canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+        canvas.drawCircle(bitmap.getWidth() / 2, bitmap.getHeight() / 2,
+                bitmap.getWidth() / 2, paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+        //Bitmap _bmp = Bitmap.createScaledBitmap(output, 60, 60, false);
+        //return _bmp;
+        return output;
+    }
+
+    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+        Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
+                .getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(output);
+
+        final int color = 0xff424242;
+        final Paint paint = new Paint();
+        final Rect rect = new Rect(0, 0, bitmap.getWidth(), bitmap.getHeight());
+        final RectF rectF = new RectF(rect);
+        final float roundPx = pixels;
+
+        paint.setAntiAlias(true);
+        canvas.drawARGB(0, 0, 0, 0);
+        paint.setColor(color);
+        canvas.drawRoundRect(rectF, roundPx, roundPx, paint);
+
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, rect, rect, paint);
+
+        return output;
     }
 
     @Override
