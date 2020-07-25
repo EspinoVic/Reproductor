@@ -1,10 +1,13 @@
 package com.example.reproductor.main;
 
+import android.graphics.Bitmap;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.reproductor.Models.Song;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class CurrentPlayListViewModel extends ViewModel {
@@ -53,8 +56,15 @@ public class CurrentPlayListViewModel extends ViewModel {
         }
         return directoriesAvailablesList;
     }
-    // public static List<Song> currentPlayingList;
-    //public static int indexCurrentPlayingSong;
 
 
+    private MutableLiveData<HashMap<String, Bitmap>> routeALbumArthashMapMutableLiveData;
+
+    public MutableLiveData<HashMap<String, Bitmap>> getRouteALbumArthashMapMutableLiveData() {
+        if(routeALbumArthashMapMutableLiveData==null){
+            routeALbumArthashMapMutableLiveData = new MutableLiveData<>();
+            routeALbumArthashMapMutableLiveData.setValue(new HashMap<String, Bitmap>());
+        }
+        return routeALbumArthashMapMutableLiveData;
+    }
 }

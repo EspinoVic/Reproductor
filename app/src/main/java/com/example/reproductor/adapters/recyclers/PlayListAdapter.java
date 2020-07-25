@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
@@ -36,6 +37,7 @@ import com.example.reproductor.main.MainActivity;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -50,10 +52,13 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     private List<Song> songList;
 
     private ViewHolderSong.ClickListener clickListener;
+    private HashMap<String, Bitmap> routeAlbumArtHashMap;
+
 
     public PlayListAdapter(ViewHolderSong.ClickListener clickListener, List<Song> songList) {
         this.clickListener = clickListener;
         this.songList = songList;
+        routeAlbumArtHashMap= MainActivity.currentPlayListViewModel.getRouteALbumArthashMapMutableLiveData().getValue();
     }
 
     @NonNull
@@ -81,12 +86,28 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         */
     }
 
+    /**
+     * Gonna search in the hashmap of bitmaps if the key given exists.
+     * This function is invoked by many threads, that's why it is synchronized;
+     * @param key_pathAlbumArt
+     * The key path of the album required.
+     * @return
+     * @see Bitmap if the path exists.
+     * @return NULL if it doesn't.
+     */
+    public synchronized Bitmap getAlbumArt(String key_pathAlbumArt){
+        return this.routeAlbumArtHashMap.get(key_pathAlbumArt);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolderSong holder, int position) {
         final Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
+
+
         if(song.getBitmap()==null){
+
             holder.img.setImageResource(R.drawable.ic_baseline_album_24);
             //if it's null, then will go an create it from the path,
             new Thread(new Runnable() {
@@ -95,11 +116,23 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                     String pathCoverArt = song.getPathCoverArt();
                     if(pathCoverArt != null){
 //                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
-                     //   Bitmap bitmap = BitmapFactory.decodeFile(pathCoverArt);
+                        Bitmap albumArtExists = getAlbumArt(pathCoverArt);
+                        if(albumArtExists!=null){
+                           song.setBitmap(albumArtExists); //ya tieene el radius corner
+                        }else{//si no existe en el hashmap, entonces lo crea y lo añade
+                            albumArtExists = getRoundedCornerBitmap(BitmapFactory.decodeFile(pathCoverArt),100);//no tiene el radius corner
+                            song.setBitmap(albumArtExists);
+                            routeAlbumArtHashMap.put(pathCoverArt,albumArtExists);
+                        }
+                        final Bitmap finalAlbumArtExists = albumArtExists;
+                        MainActivity.getInstance().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                holder.img.setImageBitmap(finalAlbumArtExists);
+                            }
+                        });
 
-                        //song.setBitmap(getCroppedBitmap(bitmap));
-                        //song.setBitmap(getRoundedCornerBitmap(bitmap,100));
-                        final RequestBuilder requestBuilder = Glide.with(MainActivity.getContext())
+/*                        final RequestBuilder requestBuilder = Glide.with(MainActivity.getContext())
                                 .load(pathCoverArt)
                                 .centerCrop()
 //                                .apply(RequestOptions.circleCropTransform())
@@ -109,15 +142,13 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                             public void run() {
                                 requestBuilder.into(holder.img);
                             }
-                        });
+                        });*/
                     }
                     // holder.img.setImageDrawable();//only in the UIThread, then I implement asyncrhounus album art creation.
                 }
             }).start();
         }
         else{
-           // Drawable img = Drawable.createFromPath(song.getPathCoverArt());
-
             holder.img.setImageBitmap(song.getBitmap());
         }
     }
@@ -143,7 +174,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         return output;
     }
 
-    public static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+    public synchronized static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
                 .getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
