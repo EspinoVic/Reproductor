@@ -11,14 +11,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 /**
- * this class is in charge of scan or saver the routes of folders availables.
+ * this class is in charge of scan or save the routes of folders availables.
  * And can save the directories availables in a file.
  * And also read that file and return it in arratList way.
  */
 public class FolderDirectoriesWriteRead {
 
-    File directorySaveMusicList = new File(Environment.getExternalStorageDirectory(),"PlayerVic");
-    File fileListDirectoriesMusicaAvailable;
+    public static File directorySaveMusicList = new File(Environment.getExternalStorageDirectory(),"PlayerVic");
+    private File fileListDirectoriesMusicaAvailable;
 
     public FolderDirectoriesWriteRead() {
         fileListDirectoriesMusicaAvailable =  new File( directorySaveMusicList,"test.txt");
@@ -56,6 +56,7 @@ public class FolderDirectoriesWriteRead {
             }
         }
 
+        //if the file exist, then it's nedeed to get the data, so i called to get the file data.
         return foldersAvailable!=null?foldersAvailable:getAvailableDirectories();
     }
 
@@ -72,7 +73,7 @@ public class FolderDirectoriesWriteRead {
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
-            System.out.println("Employee class not found");
+            System.out.println("Directory not found.");
             c.printStackTrace();
         }
         return foldersAvailable;
