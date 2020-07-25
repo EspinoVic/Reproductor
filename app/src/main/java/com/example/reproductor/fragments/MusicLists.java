@@ -17,12 +17,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.reproductor.IO.SongsByDirectoryIO;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.viewpagers.ListSongs;
 import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -40,6 +44,11 @@ public class MusicLists extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -121,6 +130,12 @@ public class MusicLists extends Fragment {
 
 
 
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 
     TabLayout tabsListPager;

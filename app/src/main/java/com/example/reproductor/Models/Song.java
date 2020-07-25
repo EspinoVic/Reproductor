@@ -2,8 +2,12 @@ package com.example.reproductor.Models;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
 
 //    private Drawable drawable;
     private String songName = "Unknown name song";
@@ -16,7 +20,7 @@ public class Song {
 
     private boolean stared = false;
 
-    private Bitmap bitmap;
+    private transient Bitmap bitmap;
 
     public Song(String songName, String author, String path) {
         this.songName = songName;
@@ -106,4 +110,5 @@ public class Song {
     public void setPathCoverArt(String pathCoverArt) {
         this.pathCoverArt = pathCoverArt;
     }
+
 }

@@ -26,7 +26,8 @@ public class FolderDirectoriesWriteRead {
 
     /**
      * This method save the direcctories where is music available inside a txt file.
-     * But first call
+     * But first checks if the file already exists then call getAvailableDirectories.
+     *
      * @see DirectoriesMusicAvailableScan to scan de storage, an then de list of directories are written.
      * @return
      */
@@ -61,7 +62,12 @@ public class FolderDirectoriesWriteRead {
     }
 
 
-    public ArrayList<String> getAvailableDirectories(){
+    /**
+     * This function shall be called only when the file where directories available does exist.
+     *
+     * @return
+     */
+    private ArrayList<String> getAvailableDirectories(){
         ArrayList<String> foldersAvailable =  null;
         try {
            // FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
@@ -73,6 +79,7 @@ public class FolderDirectoriesWriteRead {
         } catch (IOException i) {
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
+            //this case never will shown because this function is called after check the existence.
             System.out.println("Directory not found.");
             c.printStackTrace();
         }

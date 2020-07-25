@@ -15,10 +15,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.reproductor.IO.SongsByDirectoryIO;
+import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.FolderAdapter;
 import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Directorios extends Fragment implements FolderAdapter.ViewHolderFolder.ClickListener{
@@ -59,7 +64,21 @@ public class Directorios extends Fragment implements FolderAdapter.ViewHolderFol
 
 
 
-       currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().setValue(DirectoriesMusicAvailableScan.getListSongOfDirectory(pathItemClicked,getContext()));
+        //DirectoriesMusicAvailableScan.getListSongOfDirectory(pathItemClicked,getContext())
+        //Check if the path clicked is in the cache
+        ArrayList<Song> songsOfThePathClicked = currentPlayListViewModel.getHashMapSongsByDirectory().getValue().get(pathItemClicked);
+      //  if(songsOfThePathClicked== null){//if it's not in cache, let's load it from the file
+         //   songsOfThePathClicked= new SongsByDirectoryIO().getSongsByDirectory().get(pathItemClicked);
+        //FIX, the file is loaded at the start of application. So, it will just call to MediaStore Provider.
+            if(songsOfThePathClicked == null){//if doesn't be in the file, then call MediaStore provider.
+
+                songsOfThePathClicked = (ArrayList<Song>) DirectoriesMusicAvailableScan.getListSongOfDirectory(pathItemClicked, getContext());
+                //now that provider gets the list, it should to be put on the viewmodel.
+                currentPlayListViewModel.getHashMapSongsByDirectory().getValue().put(pathItemClicked,songsOfThePathClicked);
+            }
+       // }
+
+        currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().setValue(songsOfThePathClicked);
         Bundle bundle = new Bundle();
         bundle.putString("tipo_carga","directorio_play_list");
         Navigation.findNavController(recycler_pathsSongs).navigate(R.id.action_musicLists_to_currentPlayList,

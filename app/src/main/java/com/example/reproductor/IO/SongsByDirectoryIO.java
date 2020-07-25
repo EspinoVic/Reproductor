@@ -4,6 +4,7 @@ import com.example.reproductor.Models.Song;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -24,11 +25,27 @@ public class SongsByDirectoryIO {
     public void saveSonsgsByDirectory(HashMap<String, ArrayList<Song>> routesSongsByDirectory){
 
         //Folder PlayerVic.
-        File folderPlayerVic = FolderDirectoriesWriteRead.directorySaveMusicList;
-        File fileSongsByDirectory = new File(folderPlayerVic,"SongsByDirectory.vic");
+        File fileSongsByDirectory = new File(FolderDirectoriesWriteRead.directorySaveMusicList,"songsbydirectory.txt");
 
-        boolean mkdirs = fileSongsByDirectory.mkdirs();
+        //this function create directories, not files xd.
+        //boolean mkdirs = fileSongsByDirectory.mkdirs();
 
+        if(fileSongsByDirectory.exists()){
+            FileOutputStream fileOut =
+                    null;
+            try {
+                fileOut = new FileOutputStream(fileSongsByDirectory);
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                out.writeObject(routesSongsByDirectory);
+                out.close();
+                fileOut.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }else
         if(!fileSongsByDirectory.exists()) {
             try {
                 fileSongsByDirectory.createNewFile();
@@ -46,11 +63,11 @@ public class SongsByDirectoryIO {
     }
 
     public HashMap<String, ArrayList<Song>> getSongsByDirectory(){
-        HashMap<String, ArrayList<Song>> songsByDirectory =  null;
+        HashMap<String, ArrayList<Song>> songsByDirectory =  new HashMap<>();
         try {
             //Folder PlayerVic.
             File folderPlayerVic = FolderDirectoriesWriteRead.directorySaveMusicList;
-            File fileSongsByDirectory = new File(folderPlayerVic,"SongsByDirectory.vic");
+            File fileSongsByDirectory = new File(folderPlayerVic,"songsbydirectory.txt");
 
             FileInputStream fileIn = new FileInputStream(fileSongsByDirectory);
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -58,11 +75,13 @@ public class SongsByDirectoryIO {
             in.close();
             fileIn.close();
         } catch (IOException i) {
+            System.out.println("songsbydirectory.txt not found.");
             i.printStackTrace();
         } catch (ClassNotFoundException c) {
-            System.out.println("SongsByDirectory.vic not found.");
+            System.out.println("songsbydirectory.txt not found.");
             c.printStackTrace();
         }
+        //if cannot read, then return a hashmap empty.
         return songsByDirectory;
 
     }

@@ -1,6 +1,7 @@
 package com.example.reproductor.main;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Application;
@@ -8,10 +9,12 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.example.reproductor.IO.FolderDirectoriesWriteRead;
+import com.example.reproductor.IO.SongsByDirectoryIO;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
         currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);
 
          folderDirectoriesWriteRead = new FolderDirectoriesWriteRead();
-        currentPlayListViewModel.getDirectoriesAvailablesList().setValue( folderDirectoriesWriteRead.saveAvailableDirectories());
+     /*   currentPlayListViewModel.getDirectoriesAvailablesList().setValue( folderDirectoriesWriteRead.saveAvailableDirectories());
         currentPlayListViewModel.getDirectoriesAvailablesList().getValue( );
+        */
+
+        currentPlayListViewModel.getHashMapSongsByDirectory().setValue(new SongsByDirectoryIO().getSongsByDirectory());
+
 
         List<Song> songList = new ArrayList<>();
         for (int i = 0; i < 20; ++i) {
@@ -45,5 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
     public static AppCompatActivity getInstance() {
         return instance;
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        new SongsByDirectoryIO().
+                saveSonsgsByDirectory(currentPlayListViewModel.getHashMapSongsByDirectory().getValue());
+
+        super.onDestroy();
+
+
     }
 }

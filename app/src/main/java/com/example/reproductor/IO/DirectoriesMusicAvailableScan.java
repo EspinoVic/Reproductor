@@ -121,6 +121,10 @@ public class DirectoriesMusicAvailableScan {
 
     /**
      * Search all song inside the directory given and return them inside a list.
+     * This function is to be used only if in the file of SongsByDirectory doesn't have
+     * that entry. And when it's found should to be stored y that file.
+     * @see SongsByDirectoryIO
+     * 
      * @param path
      * Route directory where is gonna search.
      * @param context
