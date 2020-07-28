@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         return instance.getApplicationContext();
     }
 
-    public static AppCompatActivity getInstance() {
+    public synchronized static AppCompatActivity getInstance() {
         return instance;
     }
 
