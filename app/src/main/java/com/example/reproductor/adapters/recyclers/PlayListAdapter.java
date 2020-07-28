@@ -99,6 +99,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         return this.routeAlbumArtHashMap.get(key_pathAlbumArt);
     }
 
+    public synchronized HashMap<String, Bitmap> getRouteAlbumArtHashMap(){
+        return this.routeAlbumArtHashMap;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final ViewHolderSong holder, int position) {
         final Song song = songList.get(position);
@@ -110,35 +114,21 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
             holder.img.setImageResource(R.drawable.ic_baseline_album_24);
             //if it's null, then will go an create it from the path,
-            new Thread(() -> {
-                String pathCoverArt = song.getPathCoverArt();
-                if(pathCoverArt != null){
-//                        Drawable fromPath = Drawable.createFromPath(pathCoverArt);
-                    Bitmap albumArtExists = getAlbumArt(pathCoverArt);
-                    if(albumArtExists!=null){
-                       song.setBitmap(albumArtExists); //ya tieene el radius corner
-                    }else{//si no existe en el hashmap, entonces lo crea y lo añade
-                        albumArtExists = getRoundedCornerBitmap(BitmapFactory.decodeFile(pathCoverArt),100);//no tiene el radius corner
-                        song.setBitmap(albumArtExists);
-                        routeAlbumArtHashMap.put(pathCoverArt,albumArtExists);
-                    }
-                    final Bitmap finalAlbumArtExists = albumArtExists;
-                    MainActivity.getInstance().runOnUiThread(() -> holder.img.setImageBitmap(finalAlbumArtExists));
-
-/*                        final RequestBuilder requestBuilder = Glide.with(MainActivity.getContext())
-                            .load(pathCoverArt)
-                            .centerCrop()
-//                                .apply(RequestOptions.circleCropTransform())
-                            .apply(new RequestOptions().transform(new CenterCrop(), new RoundedCorners(35)));
-                    MainActivity.getInstance().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            requestBuilder.into(holder.img);
+            if(song.getPathCoverArt() != null)
+                new Thread(() -> {
+                    String pathCoverArt = song.getPathCoverArt();
+                        Bitmap albumArtExists = getAlbumArt(pathCoverArt);
+                        if(albumArtExists!=null){
+                           song.setBitmap(albumArtExists); //ya tieene el radius corner
+                        }else{//si no existe en el hashmap, entonces lo crea y lo añade
+                            albumArtExists = getRoundedCornerBitmap(BitmapFactory.decodeFile(pathCoverArt),100);//no tiene el radius corner
+                            song.setBitmap(albumArtExists);
+                            getRouteAlbumArtHashMap().put(pathCoverArt,albumArtExists);
                         }
-                    });*/
-                }
-                // holder.img.setImageDrawable();//only in the UIThread, then I implement asyncrhounus album art creation.
-            }).start();
+                        final Bitmap finalAlbumArtExists = albumArtExists;
+                        MainActivity.getInstance().runOnUiThread(() -> holder.img.setImageBitmap(finalAlbumArtExists));
+
+                }).start();
         }
         else{
             holder.img.setImageBitmap(song.getBitmap());
