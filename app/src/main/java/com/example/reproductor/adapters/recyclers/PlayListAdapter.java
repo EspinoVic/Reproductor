@@ -45,6 +45,10 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         routeAlbumArtHashMap= MainActivity.currentPlayListViewModel.getRouteALbumArthashMapMutableLiveData().getValue();
     }
 
+    public List<Song> getSongList() {
+        return songList;
+    }
+
     @NonNull
     @Override
     public ViewHolderSong onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -206,8 +210,9 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         @Override
         public void onClick(View view) {
             if (listener != null) {
+                //cant acces to the list from here. So the acces should to be in the fragment of the playlist.
                 listener.onItemClicked(
-                        new Song(getSongName().getText().toString(),getAuthorName().getText().toString(),getImg().getDrawable())
+                       getAdapterPosition()
                 );
             }
         }
@@ -218,7 +223,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
         }
 
         public interface ClickListener {
-            public void onItemClicked(Song song);
+            public void onItemClicked(int positionSong);
             public boolean onItemLongClicked(int position);
         }
     }

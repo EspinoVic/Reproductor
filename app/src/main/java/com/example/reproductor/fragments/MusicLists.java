@@ -15,6 +15,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.reproductor.IO.SongsByDirectoryIO;
@@ -125,6 +126,7 @@ public class MusicLists extends Fragment {
             public void onChanged(Song currentSong) {
                 ((TextView)containerMiniPlayer.findViewById(R.id.txt_songName)).setText(currentSong.getSongName());
                 ((TextView)containerMiniPlayer.findViewById(R.id.txt_authorName)).setText(currentSong.getAuthor());
+                ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(currentSong.getBitmap());
             }
         });
 

@@ -42,10 +42,13 @@ public class PlayListFragment extends Fragment implements PlayListAdapter.ViewHo
     private String mParam2;
 
     RecyclerView recycler_songsCurrentlyPlaying;
+    PlayListAdapter playListAdapter;
  //   LinearLayoutManager layoutManager =
    //         new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false) ;
     private List<Song> songList;
     private CurrentPlayListViewModel currentPlayListViewModel;
+
+    private String tipo_carga;
 
     public PlayListFragment() {
         // Required empty public constructor
@@ -77,10 +80,10 @@ public class PlayListFragment extends Fragment implements PlayListAdapter.ViewHo
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
+/*        if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        }*/
     }
 
     @Override
@@ -104,17 +107,22 @@ public class PlayListFragment extends Fragment implements PlayListAdapter.ViewHo
             //Current Play List
             //Or any other, that only will require a list given in the constructor of this class.
         if(getArguments()!=null){
-            String tipo_carga = getArguments().getString(MainActivity.TIPO_CARGA);
+            this.tipo_carga = getArguments().getString(MainActivity.TIPO_CARGA);
+            //refactorizar
             if(tipo_carga.equals(MainActivity.DIRECTORY_PLAY_LIST)){
                 List<Song> songsDirectoryObserved = currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue();
-                recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,songsDirectoryObserved));//o anonima
+                this.playListAdapter = new PlayListAdapter(this,songsDirectoryObserved);
+                recycler_songsCurrentlyPlaying.setAdapter(playListAdapter);//o anonima
             }else if(tipo_carga.equals(MainActivity.CURRENT_PLAY_LIST)){ //
                 List<Song> currentPlayListPlaying = currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue();
-                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListPlaying));
+                this.playListAdapter = new PlayListAdapter(this,currentPlayListPlaying);
+                this.recycler_songsCurrentlyPlaying.setAdapter(this.playListAdapter);
 
             }else if(tipo_carga.equals(MainActivity.ANY_PLAY_LIST)){
-                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,songList));
+                this.playListAdapter = new PlayListAdapter(this,songList);
+                this.recycler_songsCurrentlyPlaying.setAdapter(playListAdapter);
             }
+
         }
 
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());
@@ -125,9 +133,23 @@ public class PlayListFragment extends Fragment implements PlayListAdapter.ViewHo
     }
 
     @Override
-    public void onItemClicked(Song song) {
-        //TODO cambiar la playlist también, en caso de que sea otra playlist v:
-        currentPlayListViewModel.getCurrentSongMutableLiveData().setValue(song);
+    public void onItemClicked(int positionSong) {
+        List<Song> currentPlayingList = currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue();
+        //set the new play list, only if it's different to the current
+        if( currentPlayingList != this.playListAdapter.getSongList()){
+            currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().setValue(this.playListAdapter.getSongList());
+            currentPlayingList = currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue();//to get the refresh.
+            System.out.println("PlayList changed");
+        }
+
+        //If a song is clicked, and that is diferent to the current, then is changed.
+        if(currentPlayListViewModel.getCurrentSongMutableLiveData().getValue() != currentPlayingList.get(positionSong) ){
+            currentPlayListViewModel.getCurrentSongMutableLiveData().setValue(
+                    currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue().get(positionSong)
+            );
+            System.out.println("Song changed");
+        }
+
     }
 
     @Override
