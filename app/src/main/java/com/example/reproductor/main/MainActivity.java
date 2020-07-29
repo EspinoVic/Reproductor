@@ -9,6 +9,7 @@ import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import com.example.reproductor.IO.FolderDirectoriesWriteRead;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     public final static String TIPO_CARGA = "tipo_carga";
 
    // public static Bitmap FOLDER_BITMAP;
-  //  public static Bitmap ALBUM_ICON_BITMAP;
+    public static Bitmap ALBUM_ICON_BITMAP;
+    public static Drawable ALBUM_ICON_BITMAP_DRAWABLE;
 
     public static CurrentPlayListViewModel currentPlayListViewModel;
     public static FolderDirectoriesWriteRead folderDirectoriesWriteRead;
@@ -46,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         instance = this;
 
       //  FOLDER_BITMAP = BitmapFactory.decodeResource(getResources(), R.drawable.ic_baseline_folder_24);
-     //   ALBUM_ICON_BITMAP = BitmapFactory.decodeResource(getResources(), R.drawable.ic_baseline_album_24);
+//        ALBUM_ICON_BITMAP = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_baseline_album_24);
+         ALBUM_ICON_BITMAP_DRAWABLE = getDrawable(R.drawable.ic_baseline_album_80);
+//        ALBUM_ICON_BITMAP = Bitmap.createBitmap(24, 24, Bitmap.Config.ARGB_8888);
 
         setContentView(R.layout.activity_main);
         currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);

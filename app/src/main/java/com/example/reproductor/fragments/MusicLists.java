@@ -23,6 +23,7 @@ import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.viewpagers.ListSongs;
 import com.example.reproductor.main.CurrentPlayListViewModel;
+import com.example.reproductor.main.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -126,7 +127,11 @@ public class MusicLists extends Fragment {
             public void onChanged(Song currentSong) {
                 ((TextView)containerMiniPlayer.findViewById(R.id.txt_songName)).setText(currentSong.getSongName());
                 ((TextView)containerMiniPlayer.findViewById(R.id.txt_authorName)).setText(currentSong.getAuthor());
-                ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(currentSong.getBitmap());
+                if(currentSong.getBitmap()!=null)
+                    ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(currentSong.getBitmap());
+                else{
+                    ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(MainActivity.ALBUM_ICON_BITMAP);
+                }
             }
         });
 

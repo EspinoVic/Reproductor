@@ -76,6 +76,11 @@ public class ReproductorScreen extends Fragment {
         btnPreviouse = playerView.findViewById(R.id.btn_previousSong);
         btnPause = playerView.findViewById(R.id.btnPause);
 
+        recyclerPlayer.scrollToPosition(
+                currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue().indexOf(
+                        currentPlayListViewModel.getCurrentSongMutableLiveData().getValue()
+                )
+        );
 
 
         //make validation for index in range of itemCount

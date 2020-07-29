@@ -93,7 +93,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolderSong holder, int position) {
-        final Song song = songList.get(position);
+        Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
 
