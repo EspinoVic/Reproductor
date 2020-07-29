@@ -21,6 +21,7 @@ import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.FolderAdapter;
 import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
+import com.example.reproductor.main.MainActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,7 +81,7 @@ public class Directorios extends Fragment implements FolderAdapter.ViewHolderFol
 
         currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().setValue(songsOfThePathClicked);
         Bundle bundle = new Bundle();
-        bundle.putString("tipo_carga","directorio_play_list");
+        bundle.putString(MainActivity.TIPO_CARGA,MainActivity.DIRECTORY_PLAY_LIST);//directories to songs of that directory
         Navigation.findNavController(recycler_pathsSongs).navigate(R.id.action_musicLists_to_currentPlayList,
                 bundle,
                 /*para hacer el clear al backstack */null,

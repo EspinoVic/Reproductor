@@ -46,7 +46,7 @@
         tools:layout="@layout/fragment_reproductor_screen" />
     <fragment
         android:id="@+id/currentPlayList"
-        android:name="com.example.reproductor.fragments.CurrentPlayList"
+        android:name="com.example.reproductor.fragments.PlayListFragment"
         android:label="fragment_current_play_list"
         tools:layout="@layout/fragment_current_play_list" />
 </navigation>
