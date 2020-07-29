@@ -1,6 +1,5 @@
 package com.example.reproductor.adapters.recyclers;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -9,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,26 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.Placeholder;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
-import com.bumptech.glide.request.RequestOptions;
-import com.example.reproductor.IO.DirectoriesMusicAvailableScan;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
-import com.example.reproductor.fragments.CurrentPlayList;
-import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.example.reproductor.main.MainActivity;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -112,7 +96,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
         if(song.getBitmap()==null){
 
-            holder.img.setImageResource(R.drawable.ic_baseline_album_24);
+//            holder.img.setImageResource(R.drawable.ic_baseline_album_24);
+           // holder.img.setImageBitmap(MainActivity.ALBUM_ICON_BITMAP);//ya viene por defecto en el layout del item
             //if it's null, then will go an create it from the path,
             if(song.getPathCoverArt() != null)
                 new Thread(() -> {

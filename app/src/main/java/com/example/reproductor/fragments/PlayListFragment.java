@@ -1,6 +1,5 @@
 package com.example.reproductor.fragments;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,18 +18,19 @@ import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.recyclers.PlayListAdapter;
 import com.example.reproductor.main.CurrentPlayListViewModel;
+import com.example.reproductor.main.MainActivity;
 
 import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link CurrentPlayList#newInstance} factory method to
+ * Use the {@link PlayListFragment#newInstance} factory method to
  * create an instance of this fragment.
  * This kind of fragment will represent any playlist.
  *
  */
-public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHolderSong.ClickListener {
+public class PlayListFragment extends Fragment implements PlayListAdapter.ViewHolderSong.ClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +47,7 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
     private List<Song> songList;
     private CurrentPlayListViewModel currentPlayListViewModel;
 
-    public CurrentPlayList() {
+    public PlayListFragment() {
         // Required empty public constructor
 
     }
@@ -55,7 +55,7 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
 
 
 
-    public CurrentPlayList(List<Song> songList) {
+    public PlayListFragment(List<Song> songList) {
         this.songList = songList;
     }
 
@@ -65,8 +65,8 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
      *
      */
     // TODO: Rename and change types and number of parameters
-    public static CurrentPlayList newInstance(/*String param1, String param2*/) {
-        CurrentPlayList fragment = new CurrentPlayList();
+    public static PlayListFragment newInstance(/*String param1, String param2*/) {
+        PlayListFragment fragment = new PlayListFragment();
        /* Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -94,24 +94,27 @@ public class CurrentPlayList extends Fragment implements PlayListAdapter.ViewHol
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final PlayListAdapter.ViewHolderSong.ClickListener clickListenerThis = this;
+        //final PlayListAdapter.ViewHolderSong.ClickListener clickListenerThis = this;
 
         currentPlayListViewModel = new ViewModelProvider(requireActivity()).get(CurrentPlayListViewModel.class);
         this.recycler_songsCurrentlyPlaying =  view.findViewById(R.id.recycler_songsCurrentlyPlaying);
 
+        //the list of songs showed will be different according to:
+            //Directory
+            //Current Play List
+            //Or any other, that only will require a list given in the constructor of this class.
         if(getArguments()!=null){
-            if(getArguments().getString("tipo_carga").equals("directorio_play_list")){
-                currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<Song>>() {
-                    @Override
-                    public void onChanged(final List<Song> songs) {
-                        //trucaso haha. Instead of this, then a final object
-                        recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(clickListenerThis,songs));//o anonima
+            String tipo_carga = getArguments().getString(MainActivity.TIPO_CARGA);
+            if(tipo_carga.equals(MainActivity.DIRECTORY_PLAY_LIST)){
+                List<Song> songsDirectoryObserved = currentPlayListViewModel.getDirectoryPlayListCurrentObservedMutableLiveData().getValue();
+                recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,songsDirectoryObserved));//o anonima
+            }else if(tipo_carga.equals(MainActivity.CURRENT_PLAY_LIST)){ //
+                List<Song> currentPlayListPlaying = currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue();
+                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListPlaying));
 
-                    }
-                });
+            }else if(tipo_carga.equals(MainActivity.ANY_PLAY_LIST)){
+                this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,songList));
             }
-        }else{
-            this.recycler_songsCurrentlyPlaying.setAdapter(new PlayListAdapter(this,currentPlayListViewModel.getCurrentPlayingSongListMutableLiveData().getValue()));//o anonima
         }
 
         recycler_songsCurrentlyPlaying.setItemAnimator(new DefaultItemAnimator());

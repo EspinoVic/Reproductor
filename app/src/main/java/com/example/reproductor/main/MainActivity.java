@@ -24,6 +24,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Value for fragment directories.
+     */
+    public final static String DIRECTORY_PLAY_LIST = "directory_play_list";
+    public final static String CURRENT_PLAY_LIST = "current_play_list";
+    public final static String ANY_PLAY_LIST = "any_play_list";
+
+    public final static String TIPO_CARGA = "tipo_carga";
+
+   // public static Bitmap FOLDER_BITMAP;
+  //  public static Bitmap ALBUM_ICON_BITMAP;
+
     public static CurrentPlayListViewModel currentPlayListViewModel;
     public static FolderDirectoriesWriteRead folderDirectoriesWriteRead;
     private static AppCompatActivity instance;
@@ -32,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
+      //  FOLDER_BITMAP = BitmapFactory.decodeResource(getResources(), R.drawable.ic_baseline_folder_24);
+     //   ALBUM_ICON_BITMAP = BitmapFactory.decodeResource(getResources(), R.drawable.ic_baseline_album_24);
 
         setContentView(R.layout.activity_main);
         currentPlayListViewModel = new ViewModelProvider(this).get(CurrentPlayListViewModel.class);

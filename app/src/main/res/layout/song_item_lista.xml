@@ -20,7 +20,7 @@
         android:id="@+id/img_song"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:src="@drawable/kill_em_all"
+        android:src="@drawable/ic_baseline_album_24"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintTop_toTopOf="@id/gl_topText"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottomImg"
