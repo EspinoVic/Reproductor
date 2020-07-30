@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.reproductor.IO.SongsByDirectoryIO;
 import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.adapters.viewpagers.ListSongs;
@@ -26,9 +25,6 @@ import com.example.reproductor.main.CurrentPlayListViewModel;
 import com.example.reproductor.main.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 
 /**
@@ -130,7 +126,7 @@ public class MusicLists extends Fragment {
                 if(currentSong.getBitmap()!=null)
                     ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(currentSong.getBitmap());
                 else{
-                    ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageBitmap(MainActivity.ALBUM_ICON_BITMAP);
+                    ((ImageView)containerMiniPlayer.findViewById(R.id.img_song)).setImageDrawable(MainActivity.ALBUM_ICON_BITMAP_DRAWABLE_RED);
                 }
             }
         });

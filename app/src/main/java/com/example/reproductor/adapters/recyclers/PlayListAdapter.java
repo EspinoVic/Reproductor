@@ -92,13 +92,14 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolderSong holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderSong holder, int position) {
         Song song = songList.get(position);
         holder.songName.setText(song.getSongName());
         holder.authorName.setText(song.getAuthor());
 
 
         if(song.getBitmap()==null){
+            holder.img.setImageDrawable(MainActivity.ALBUM_ICON_BITMAP_DRAWABLE_BLUE);
 
 //            holder.img.setImageResource(R.drawable.ic_baseline_album_24);
            // holder.img.setImageBitmap(MainActivity.ALBUM_ICON_BITMAP);//ya viene por defecto en el layout del item
@@ -114,9 +115,9 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                             song.setBitmap(albumArtExists);
                             getRouteAlbumArtHashMap().put(pathCoverArt,albumArtExists);
                         }
-                        final Bitmap finalAlbumArtExists = albumArtExists;
+                      /*  Bitmap finalAlbumArtExists = albumArtExists;
                         MainActivity.getInstance().runOnUiThread(() -> holder.img.setImageBitmap(finalAlbumArtExists));
-
+*/
                 }).start();
         }
         else{

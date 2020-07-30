@@ -1,11 +1,8 @@
 package com.example.reproductor.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.app.Application;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -36,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
    // public static Bitmap FOLDER_BITMAP;
     public static Bitmap ALBUM_ICON_BITMAP;
-    public static Drawable ALBUM_ICON_BITMAP_DRAWABLE;
+    public static Drawable ALBUM_ICON_BITMAP_DRAWABLE_RED;
+    public static Drawable ALBUM_ICON_BITMAP_DRAWABLE_BLUE;
 
     public static CurrentPlayListViewModel currentPlayListViewModel;
     public static FolderDirectoriesWriteRead folderDirectoriesWriteRead;
@@ -49,7 +47,8 @@ public class MainActivity extends AppCompatActivity {
 
       //  FOLDER_BITMAP = BitmapFactory.decodeResource(getResources(), R.drawable.ic_baseline_folder_24);
 //        ALBUM_ICON_BITMAP = BitmapFactory.decodeResource(getContext().getResources(), R.drawable.ic_baseline_album_24);
-         ALBUM_ICON_BITMAP_DRAWABLE = getDrawable(R.drawable.ic_baseline_album_80);
+         ALBUM_ICON_BITMAP_DRAWABLE_RED = getDrawable(R.drawable.ic_baseline_album_80);
+        ALBUM_ICON_BITMAP_DRAWABLE_BLUE = getDrawable(R.drawable.ic_baseline_album_24);
 //        ALBUM_ICON_BITMAP = Bitmap.createBitmap(24, 24, Bitmap.Config.ARGB_8888);
 
         setContentView(R.layout.activity_main);

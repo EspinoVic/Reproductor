@@ -1,6 +1,5 @@
 package com.example.reproductor.adapters.recyclers;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import com.example.reproductor.Models.Song;
 import com.example.reproductor.R;
 import com.example.reproductor.main.MainActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,7 +63,7 @@ public class SongBigAdapter extends RecyclerView.Adapter<SongBigAdapter.ViewHold
         holder.authorName.setText(song.getAuthor());
         if(song.getPathCoverArt()==null)
 //            holder.img.setImageBitmap(MainActivity.ALBUM_ICON_BITMAP);
-            holder.img.setImageDrawable(MainActivity.ALBUM_ICON_BITMAP_DRAWABLE);
+            holder.img.setImageDrawable(MainActivity.ALBUM_ICON_BITMAP_DRAWABLE_RED);
         else
             if(song.getBitmap()!=null)
                 holder.img.setImageBitmap(song.getBitmap());

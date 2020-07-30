@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.02" />
+        app:layout_constraintGuide_percent="0.005" />
 
 
     <com.google.android.material.tabs.TabLayout
@@ -64,7 +64,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
 
-        app:layout_constraintGuide_percent="0.09"
+        app:layout_constraintGuide_percent="0.065"
          />
 
     <androidx.viewpager2.widget.ViewPager2
