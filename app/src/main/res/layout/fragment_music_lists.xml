@@ -93,33 +93,45 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:id="@+id/container_mini_player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="4dp"
+        android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="@id/gl_bottomMarg"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintVertical_bias="0.5"
-        >
+        android:background="@color/colorPrimary"
+        android:padding="4dp"
+        tools:context=".fragments.MiniPlayer">
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_startImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".025" />
 
         <ImageView
             android:id="@+id/img_song"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/kill_em_all"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/ic_baseline_album_24"
             android:transitionName="transition_imgCurrentSong"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/gl_startName"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="@id/gl_topText"
+            app:layout_constraintBottom_toBottomOf="@id/gl_bottomImg"
+            app:layout_constraintRight_toRightOf="@id/gl_endImage"
+            app:layout_constraintLeft_toLeftOf="@id/gl_startImage"
+            app:layout_constraintVertical_bias="0.5" />
 
-            app:layout_constraintVertical_bias="0.5"
-            app:layout_constraintHorizontal_bias="0.5"/>
-
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_endImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".21" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_startName"
@@ -128,12 +140,14 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent=".25" />
 
+
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_topText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
+            app:layout_constraintGuide_percent="0.10" />
 
         <TextView
             android:id="@+id/txt_songName"
@@ -143,13 +157,13 @@
             android:layout_weight="3"
             android:gravity="start"
             android:singleLine="true"
+            android:transitionName="transition_songName"
             android:text="@string/name_song"
             android:textColor="@color/lyrics_primary"
-            android:textSize="16sp"
+            android:textSize="17sp"
             android:textStyle="bold"
-            android:transitionName="transition_songName"
-            app:layout_constraintRight_toLeftOf="@id/btnPause"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="@id/gl_topText" />
 
         <TextView
@@ -158,20 +172,29 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
-            android:gravity="left"
+            android:gravity="start"
             android:text="@string/author_name"
             android:textColor="@color/lyric_secondary"
-            android:textSize="14sp"
-            android:singleLine="true"
+            android:textSize="15sp"
             android:transitionName="transition_authorName"
-            app:layout_constraintRight_toLeftOf="@id/btnPause"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintLeft_toLeftOf="@id/gl_startName"
-            app:layout_constraintTop_toBottomOf="@id/txt_songName" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_songName"
+            app:layout_constraintBottom_toTopOf="@id/gl_bottomImg"
+            />
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_bottomImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".9" />
 
         <ImageButton
             android:id="@+id/btnPause"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginRight="8dp"
             android:adjustViewBounds="true"
@@ -181,13 +204,13 @@
             android:src="@drawable/ic_pause_button"
             android:transitionName="transition_btnPause"
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias=".5" />
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_bottomMarg"
