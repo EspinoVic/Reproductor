@@ -8,6 +8,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.RectF;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,7 +113,12 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
                         if(albumArtExists!=null){
                            song.setBitmap(albumArtExists); //ya tieene el radius corner
                         }else{//si no existe en el hashmap, entonces lo crea y lo añade
-                            albumArtExists = getRoundedCornerBitmap(BitmapFactory.decodeFile(pathCoverArt),100);//no tiene el radius corner
+                            Bitmap bitmapGot = BitmapFactory.decodeFile(pathCoverArt);
+                            if(bitmapGot == null){
+                                albumArtExists = MainActivity.ALBUM_ICON_BITMAP_BITMAP_BLUE;
+                            }else  if(bitmapGot!=null)
+                                albumArtExists = getRoundedCornerBitmap(bitmapGot,100);//no tiene el radius corner
+
                             song.setBitmap(albumArtExists);
                             getRouteAlbumArtHashMap().put(pathCoverArt,albumArtExists);
                         }
@@ -147,6 +154,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
     }
 
     public synchronized static Bitmap getRoundedCornerBitmap(Bitmap bitmap, int pixels) {
+
         Bitmap output = Bitmap.createBitmap(bitmap.getWidth(), bitmap
                 .getHeight(), Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
@@ -167,6 +175,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.ViewHo
 
         return output;
     }
+
+
 
     @Override
     public int getItemCount() {

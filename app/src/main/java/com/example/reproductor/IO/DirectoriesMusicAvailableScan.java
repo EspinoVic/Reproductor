@@ -16,7 +16,8 @@ import java.util.List;
 
 /**
  * This class scans the storage in order to found directories where would there be songs in.
- * For write and read this directories see
+*  Before you get the list of folders, you need to call startScan method first.
+ * For writing and read this directories see
  * @see FolderDirectoriesWriteRead
  */
 public class DirectoriesMusicAvailableScan {
