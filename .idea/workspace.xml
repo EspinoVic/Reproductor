@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="Nexus 6" />
+        <device id="Nexus 5X" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="debug" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f6cfbb71-7557-4680-9127-8859b7c01207" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="a254459b" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="valueResourceFile" />
+        <option value="layoutResourceFile" />
+        <option value="navigationResourceFile" />
+        <option value="resourceFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1eTPb3JYYQF56jM3OmKJ0eNrnT9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="a254459b" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-07-29T02:36:14.595Z" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../../SDK" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
+    <property name="last_opened_file_path" value="F:/AndroidStudioProjects/Tareas" />
+    <property name="project.structure.last.edited" value="Build Variants" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="PsdUISettings">
+    <option name="MODULE_TAB" value="Properties" />
+    <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Android\Projectss\Reproductor\app\src\main\res\font" />
+      <recent name="F:\Android\Projectss\Reproductor\app\src\main\res\drawable" />
+      <recent name="F:\Android\Projectss\Reproductor\app\src\main\res\layout" />
+      <recent name="F:\Android\Projectss\Reproductor\app\src\main\res\anim" />
+    </key>
+    <key name="android.template.-1622570222">
+      <recent name="com.example.reproductor" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.reproductor.IO" />
+      <recent name="com.example.reproductor.adapters.recyclers" />
+      <recent name="com.example.reproductor.adapters" />
+      <recent name="com.example.reproductor.fragments" />
+      <recent name="com.example.reproductor.transitions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Android\Projectss\Reproductor\app\src\main\res\font" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f6cfbb71-7557-4680-9127-8859b7c01207" name="Default Changelist" comment="" />
+      <created>1594342677819</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594342677819</updated>
+    </task>
+    <task id="LOCAL-00001" summary="The playList into a directory already show the album art each song.">
+      <created>1595291479268</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1595291479268</updated>
+    </task>
+    <task id="LOCAL-00002" summary="The way in what the directories are obtained changed and now, are stored in ViewModel.">
+      <created>1595301788053</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1595301788053</updated>
+    </task>
+    <task id="LOCAL-00003" summary="FIX on the way in what the directories are obtained, it used to return null.">
+      <created>1595302561652</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1595302561652</updated>
+    </task>
+    <task id="LOCAL-00004" summary="FIX In some cases the route of the album art exist, but when the creation of the album art is tried fails, so the app chashed.&#10;Now if it happens, it's given a BlueDiscDefault albumArt.">
+      <created>1597200227874</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1597200227874</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="The playList into a directory already show the album art each song." />
+    <MESSAGE value="The way in what the directories are obtained changed and now, are stored in ViewModel." />
+    <MESSAGE value="FIX on the way in what the directories are obtained, it used to return null." />
+    <MESSAGE value="FIX In some cases the route of the album art exist, but when the creation of the album art is tried fails, so the app chashed.&#10;Now if it happens, it's given a BlueDiscDefault albumArt." />
+    <option name="LAST_COMMIT_MESSAGE" value="FIX In some cases the route of the album art exist, but when the creation of the album art is tried fails, so the app chashed.&#10;Now if it happens, it's given a BlueDiscDefault albumArt." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="372" y="197" width="966" height="728" key="#PSD" timestamp="1595698661800">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="372" y="197" width="966" height="728" key="#PSD/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595698661800" />
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1594853581749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="274" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594853581749" />
+    <state x="765" y="229" width="696" height="582" key="#com.intellij.ide.util.MemberChooser" timestamp="1595988788323">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="229" width="696" height="582" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595988788323" />
+    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1595698745675">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595698745675" />
+    <state x="388" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1595125322960">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="388" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595125322960" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1595483030440">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595483030440" />
+    <state x="540" y="274" key="AndroidCreateResourceDirectoryDialog" timestamp="1594527778254">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="274" key="AndroidCreateResourceDirectoryDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594527778254" />
+    <state x="540" y="274" key="AndroidCreateResourceFileDialog" timestamp="1595481460729">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="540" y="274" key="AndroidCreateResourceFileDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595481460729" />
+    <state x="515" y="357" key="AndroidCreateXmlResourceDialog" timestamp="1595984142369">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="515" y="357" key="AndroidCreateXmlResourceDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595984142369" />
+    <state x="614" y="111" key="CommitChangelistDialog2" timestamp="1597200222985">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="614" y="111" key="CommitChangelistDialog2/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200222985" />
+    <state width="728" height="466" key="DebuggerActiveHint" timestamp="1597198875670">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="728" height="466" key="DebuggerActiveHint/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597198875670" />
+    <state width="538" height="442" key="Diff.GoToChangePopup" timestamp="1594368179314">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="538" height="442" key="Diff.GoToChangePopup/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594368179314" />
+    <state x="-90" y="-27" width="1230" height="599" maximized="true" key="DiffContextDialog" timestamp="1595481269012">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-90" y="-27" width="1230" height="599" maximized="true" key="DiffContextDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595481269012" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1600559351219">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1600559351219" />
+    <state width="1877" height="245" key="GridCell.Tab.0.bottom" timestamp="1597200803024">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="245" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200803024" />
+    <state width="1877" height="245" key="GridCell.Tab.0.center" timestamp="1597200803022">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="245" key="GridCell.Tab.0.center/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200803022" />
+    <state width="1877" height="245" key="GridCell.Tab.0.left" timestamp="1597200803022">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="245" key="GridCell.Tab.0.left/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200803022" />
+    <state width="1877" height="245" key="GridCell.Tab.0.right" timestamp="1597200803023">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="245" key="GridCell.Tab.0.right/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200803023" />
+    <state width="1135" height="290" key="GridCell.Tab.1.bottom" timestamp="1596394278703">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1135" height="290" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1596394278703" />
+    <state width="1135" height="290" key="GridCell.Tab.1.center" timestamp="1596394278702">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1135" height="290" key="GridCell.Tab.1.center/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1596394278702" />
+    <state width="1135" height="290" key="GridCell.Tab.1.left" timestamp="1596394278702">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1135" height="290" key="GridCell.Tab.1.left/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1596394278702" />
+    <state width="1135" height="290" key="GridCell.Tab.1.right" timestamp="1596394278702">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1135" height="290" key="GridCell.Tab.1.right/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1596394278702" />
+    <state x="766" y="230" key="RollbackChangesDialog" timestamp="1595483019826">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="766" y="230" key="RollbackChangesDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595483019826" />
+    <state x="181" y="138" width="1443" height="716" key="SettingsEditor" timestamp="1595699234252">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="181" y="138" width="1443" height="716" key="SettingsEditor/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595699234252" />
+    <state x="807" y="435" key="VCS.ChangelistChooser" timestamp="1594365688835">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="807" y="435" key="VCS.ChangelistChooser/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594365688835" />
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2" timestamp="1597200272749">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="241" key="Vcs.Push.Dialog.v2/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597200272749" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1595994951744">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595994951744" />
+    <state x="776" y="297" key="chooseDestDirectoryDialog" timestamp="1595481505928">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="776" y="297" key="chooseDestDirectoryDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595481505928" />
+    <state x="92" y="92" width="1736" height="856" key="com.android.tools.idea.avdmanager.AvdListDialog" timestamp="1594869805427">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.android.tools.idea.avdmanager.AvdListDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594869805427" />
+    <state x="538" y="218" key="com.intellij.ide.util.TipDialog" timestamp="1597089578874">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="538" y="218" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597089578874" />
+    <state x="519" y="113" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594452674099">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="519" y="113" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594452674099" />
+    <state x="320" y="170" width="1376" height="816" key="dock-window-1" timestamp="1594599992637">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="320" y="170" width="1376" height="816" key="dock-window-1/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594599992637" />
+    <state x="591" y="217" width="1068" height="606" key="find.popup" timestamp="1597196957976">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="591" y="217" width="1068" height="606" key="find.popup/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1597196957976" />
+    <state x="702" y="138" key="refactoring.ChangeSignatureDialog" timestamp="1594692124202">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="702" y="138" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1594692124202" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1595126339972">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1595126339972" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1596076543356">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040/-1360.0.1360.728@0.0.1920.1040" timestamp="1596076543356" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/fragments/currentPlaying/ReproductorScreen.java</url>
+          <line>67</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/IO/DirectoriesMusicAvailableScan.java</url>
+          <line>164</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/IO/SongsByDirectoryIO.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/adapters/recyclers/SongBigAdapter.java</url>
+          <line>64</line>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/fragments/MusicLists.java</url>
+          <line>125</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/fragments/MusicLists.java</url>
+          <line>85</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/fragments/MusicLists.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="91" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <condition expression="bitmap == null" language="JAVA" />
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/adapters/recyclers/PlayListAdapter.java</url>
+          <line>157</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/reproductor/main/MainActivity.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="app">
+        <watch expression="containerMiniPlayer.findViewById(R.id.btnPause)" />
+        <watch expression="BitmapFactory.decodeFile(pathCurrentSong)" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
